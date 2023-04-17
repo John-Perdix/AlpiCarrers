@@ -1,0 +1,165 @@
+<div>
+  <section class="home">
+    <div class="child" nz-col nzSpan="12">
+      <div>
+        <h1>Queres encontrar a carreira profissional perfeita para ti?</h1>
+        <h2>Nós ajudamos!</h2>
+        <p>Se queres ficar a saber mais sobre a nossa forma de recrutamento clica aqui</p>
+      </div>
+      <div>
+        <button nz-button onclick="window.location= 'candidatura'" nzType="primary">Candidatar-me</button>
+        <button nz-button onclick="window.location= 'vagas'" nzType="default">Carreiras disponiveis</button>
+      </div>
+    </div>
+
+    <div class="child" nz-col nzSpan="12">
+      <img class="img_home" src="../../assets/people_looking-01.png"
+        alt="Ilustração de pessoas a olhar em volta com binoculus etc">
+    </div>
+  </section>
+
+  <section class="flex grey-bkg" nz-row [nzGutter]="16">
+    <div class="child" nz-col nzSpan="12">
+      <nz-input-group class="margin-8r-12b" [nzSuffix]="searchIconTemplate">
+        <input type="text" nz-input placeholder="Posição/ Empresa/ Area/ Local/ Política" />
+      </nz-input-group>
+
+      <ng-template #searchIconTemplate><span nz-icon nzType="search" nzTheme="outline"></span></ng-template>
+
+      <nz-table #basicTable [nzData]="listOfData">
+        <thead>
+          <tr>
+            <th>Posição</th>
+            <th>Empresa</th>
+            <th>Area</th>
+            <th>Politica</th>
+            <th>Local</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td>{{ data.posicao }}</td>
+            <td>{{ data.empresa }}</td>
+            <td>{{ data.area }}</td>
+            <td>{{ data.politica }}</td>
+            <td>{{ data.local }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+
+    <div class="child flex dir-col" nz-col nzSpan="12">
+
+      <nz-button-group [nzSize]="size">
+        <button nz-button nzType="default">
+          Trabalhos a nivel nacional
+          <span nz-icon nzType="right"></span>
+        </button>
+      </nz-button-group>
+
+
+      <nz-button-group [nzSize]="size">
+        <button nz-button nzType="default">
+          Trabalhos a nivel internacional
+          <span nz-icon nzType="right"></span>
+        </button>
+      </nz-button-group>
+
+      <nz-button-group [nzSize]="size">
+        <button nz-button nzType="default">
+          Trabalhos na tua zona
+          <span nz-icon nzType="right"></span>
+        </button>
+      </nz-button-group>
+
+      <nz-button-group nz-col nzSpan="12" [nzSize]="size">
+        <button nz-button nzType="default">
+          Trabalhos remotos
+          <span nz-icon nzType="right"></span>
+        </button>
+      </nz-button-group>
+    </div>
+  </section>
+
+  <section class="flex dir-col">
+    <h1>Maximiza as tuas oportunidades</h1>
+    <div class="flex">
+      <div class="child" nz-col nzSpan="12">
+        <img class="img_home" src="../../assets/organize.png"
+          alt="Ilustração de pessoas a olhar em volta com binoculus etc">
+      </div>
+
+      <div class="child" nz-col nzSpan="12">
+        <div>
+          <h2>Organizamos para ti</h2>
+          <p>Organizamos todas as oportunidades de emprego
+            de acordo com as tuas preferencias</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex">
+
+      <div class="child" nz-col nzSpan="12">
+        <div>
+          <h2>Encontra empregos de alto nivel</h2>
+          <p>Temos para ti os melhores trabalhos do mercado a nivel nacional
+            e internacional.</p>
+        </div>
+      </div>
+
+
+      <div class="child" nz-col nzSpan="12">
+        <img class="img_home" src="../../assets/empregos_alto_nivel.png"
+          alt="Ilustração de uma pessoa a levantar um trofeu">
+      </div>
+    </div>
+  </section>
+
+  <section>
+
+    <nz-card class="grey-bkg flex margin-8r-12b">
+      <div class="flex">
+        <div>
+          <img class="img_home" src="../../assets/revolut.png" alt="Logoimagem da div.pt">
+        </div>
+
+        <div>
+          <h2>Product designer</h2>
+          <nz-tag><fa-icon [icon]="faMoneyBillWave"></fa-icon> 900€ - 1200€</nz-tag>
+          <span nz-typography nzType="secondary">2 years of experience - junior</span>
+        </div>
+      </div>
+
+
+      <div>
+        <div>
+          <nz-tag [nzColor]="color">UX-UI</nz-tag>
+          <nz-tag [nzColor]="color">UX-UI</nz-tag>
+          <nz-tag [nzColor]="color">UX-UI</nz-tag>
+          <nz-tag [nzColor]="color">UX-UI</nz-tag>
+          <nz-tag [nzColor]="color">UX-UI</nz-tag>
+        </div>
+        <button nz-button onclick="window.location= 'candidatura'" nzType="primary">Candidatar-me</button>
+
+      </div>
+
+    </nz-card>
+
+
+    <nz-card class="grey-bkg flex margin-8r-12b" nzTitle="Card title" [nzExtra]="extraTemplate">
+      <div>
+        <div><img class="img_home" src="../../assets/divpt.png" alt="Logoimagem da div.pt"></div>
+      </div>
+
+
+      <div>
+
+      </div>
+
+    </nz-card>
+    <ng-template #extraTemplate>
+      <a>More</a>
+    </ng-template>
+  </section>
+</div>
