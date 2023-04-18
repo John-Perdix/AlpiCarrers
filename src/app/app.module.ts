@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,6 +31,12 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+
+/* serachpipe Module */
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 
 registerLocaleData(pt);
@@ -42,6 +49,7 @@ registerLocaleData(pt);
     CandidaturaComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -60,7 +68,11 @@ registerLocaleData(pt);
     NzCardModule,
     NzTagModule,
     FontAwesomeModule,
-    NzTypographyModule
+    NzTypographyModule,
+    NzFormModule,
+    NzBreadCrumbModule,
+
+    Ng2SearchPipeModule
     
   ],
   providers: [

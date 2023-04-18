@@ -1,16 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+
+/* Serviço */
+import { EmpregosService } from '../empregos.service';
+import { Emprego } from '../empregos.service';
 
 /* FontAwesome Icons */
 import { faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 
-interface Emprego {
-  posicao: string;
-  empresa: string;
-  area: string;
-  politica: string;
-  local: string;
-}
-
+/* Button size module de ng-zorro */
 import { NzButtonSize } from 'ng-zorro-antd/button';
 
 @Component({
@@ -20,36 +18,34 @@ import { NzButtonSize } from 'ng-zorro-antd/button';
 })
 
 
-export class LandingComponent {
+export class LandingComponent implements OnInit {
+   
+
+  
+  validateForm!: UntypedFormGroup;
+
+  ngOnInit(): void {
+    this.getEmprego();
+  }
+
+  getEmprego(): void {
+    this.listOfData = this.empregosService.getEmprego();
+  }
+
+  listOfData: Emprego[] = [];
+
+  constructor(private empregosService: EmpregosService) {}
+
+  /* search-module var */
+  searchEmprego: any;
+
 
   /* FontAwesome Icons */
   faMoneyBillWave = faMoneyBillWave;
 
-  color= '#D85F35';
+  color= '#E4997F';
 
   size: NzButtonSize = 'large';
 
-  listOfData: Emprego[] = [
-    {
-      posicao: 'Web dev',
-      empresa: 'div.pt',
-      area: 'IT',
-      politica: 'Hibrido',
-      local: 'Coimbra',
-    },
-    {
-      posicao: 'Web dev',
-      empresa: 'div.pt',
-      area: 'IT',
-      politica: 'Hibrido',
-      local: 'Coimbra',
-    },
-    {
-      posicao: 'Web dev',
-      empresa: 'div.pt',
-      area: 'IT',
-      politica: 'Hibrido',
-      local: 'Coimbra',
-    }
-  ];
+  
 }

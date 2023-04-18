@@ -1,18 +1,57 @@
 <nz-layout>
-  <nz-header>
-    <div class="logo"><a onclick="window.location= ''"><img src="../assets/alpicarrers_logo_small.png" alt="alpiCarrers logo"></a></div>
-    <ul nz-menu nzTheme="dark" nzMode="horizontal">
-      <li nz-menu-item onclick="window.location= 'vagas'">Vagas</li>
-      <li nz-menu-item>nav 2</li>
-    </ul>
+  <nz-header class="grey-bkg nav-border jst-spc-between">
+    <div class="wrapper flex jst-spc-between">
+      <div class="logo"><a onclick="window.location= ''"><img src="../assets/alpicarrers_logo_small.png"
+            alt="alpiCarrers logo"></a></div>
+      <div>
+        <ul nz-menu nzMode="horizontal">
+          <li nz-menu-item onclick="window.location= 'vagas'">Vagas</li>
+          <li nz-menu-item onclick="window.location= 'candidatura'">Candidatura</li>
+        </ul>
+      </div>
+      <div>
+      <nz-input-group class="margin-8r-12b" [nzSuffix]="searchIconTemplate">
+        <input type="text" nz-input placeholder="Posição/ Empresa/ Area/ Local/ Política" />
+        <ng-template #searchIconTemplate><span nz-icon nzType="search" nzTheme="outline"></span></ng-template>
+      </nz-input-group>
+      </div>
+    </div>
   </nz-header>
 
   <nz-content>
     <router-outlet></router-outlet>
+
+
+    <div class="wrapper">
+      <section class="grey-bkg margin-8r-12b round_border" nz-col nzSpan="24">
+        <h1>Newsletter</h1>
+        <p nz-col [nzXs]="24" [nzMd]="24" [nzLg]="12">Inscreve-te na nossa newsletter e recebe todas as ofertas de
+          emprego mais recentes!</p>
+
+        <form nz-form [nzLayout]="'vertical'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+
+          <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="email">E-mail</nz-form-label>
+            <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
+              <input requeired placeholder="exemplo@gmail.com" nz-input formControlName="email" id="email" />
+            </nz-form-control>
+          </nz-form-item>
+
+
+          <nz-form-item>
+            <nz-form-control>
+              <button nz-button nzType="primary">Inscrever-me</button>
+            </nz-form-control>
+          </nz-form-item>
+
+        </form>
+
+      </section>
+    </div>
   </nz-content>
 
   <nz-footer>
-  <img src="../assets/alpicarrers_logo.png" alt="alpiCarrers logo">
-  <nz-footer>AlpiCarrers ©2023 Implement Div.pt</nz-footer>
+    <img src="../assets/alpicarrers_logo.png" alt="alpiCarrers logo">
+    <nz-footer>AlpiCarrers ©2023 Implement Div.pt</nz-footer>
   </nz-footer>
 </nz-layout>

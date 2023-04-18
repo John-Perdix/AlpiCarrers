@@ -1,1 +1,143 @@
 /* You can add global styles to this file, and also import other style files */
+.home{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: end;
+}
+
+.img_home{
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.dir-col{
+    flex-direction: column;
+}
+
+[nz-button] {
+    margin-right: 8px;
+    margin-bottom: 12px;
+  }
+
+  nz-button-group [nz-button] {
+    margin-right: 0;
+  }
+
+ .margin-8r-12b{
+    margin-right: 8px;
+    margin-bottom: 12px;
+ }
+
+  .grey-bkg{
+    background-color: #ECEFF2;
+    padding: 1em 3em;
+  }
+
+  section {
+    margin: 3em 0;
+    padding: 2em 1em;
+  }
+
+  .wrapper{
+    max-width: 1300px;
+    margin: auto;
+  }
+
+  .home h1{
+    font-size: 4em;
+    font-weight: 900;
+    color: #D85F35;
+  }
+
+  .home h2{
+    font-size: 3em;
+    font-weight: 500;
+    color: #E4997F;
+  }
+
+  h1 {
+    font-size: 3em;
+    font-weight: 700;
+    color: #D85F35;
+  }
+
+  h2{
+    font-size: 2em;
+    font-weight: 500;
+    color: #E4997F;
+  }
+
+  h3{
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #D85F35;
+  }
+
+  .child-2 {
+    z-index: 0;
+  }
+
+  .child-1 {
+    z-index: 1;
+  }
+
+  .round_border{
+    border-radius: 3em;
+  }
+
+  .marquee{
+    display: flex;
+    justify-content: flex-start;
+    overflow: hidden;
+    border-radius: 5em;
+    background-color: #ECEFF2;
+  }
+
+  .marquee img{
+    animation: move-rtl 15000ms linear infinite;
+  }
+
+  @keyframes move-rtl{
+    0%{
+      transform: translateX(0);
+    }
+    100%{
+      transform: translateX(-100%);
+    }
+  }
+
+  .button-full{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 3em;
+  }
+
+  .ant-tag{
+    margin: 5px 8px 5px 8px;
+    width: max-content;
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="home"] {
+      flex-direction: column-reverse;
+    }
+
+    [class*="flex"] {
+      flex-direction: column;
+    }
+
+    [class*="reverse-direction"] {
+      flex-direction: column-reverse;
+    }
+  }
