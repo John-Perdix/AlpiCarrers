@@ -1,51 +1,120 @@
 <div class="wrapper">
-        <nz-breadcrumb>
-            <nz-breadcrumb-item>
-                <a onclick="window.location= ''">Home</a>
-            </nz-breadcrumb-item>
-            <nz-breadcrumb-item>Vagas</nz-breadcrumb-item>
-        </nz-breadcrumb>
+    <section class="mg-0">
+    <nz-breadcrumb>
+        <nz-breadcrumb-item>
+            <a onclick="window.location= ''">Home</a>
+        </nz-breadcrumb-item>
+        <nz-breadcrumb-item>Vagas</nz-breadcrumb-item>
+    </nz-breadcrumb>
 
-        <h1>Vagas</h1>
-        <!-- FORM -->
+    <h1>Candidatura</h1>
+    </section>
 
-        <form nzLayout="vertical" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-            <!-- Nome -->
-            <nz-form-item>
-                <nz-form-label [nzSpan]="5">Nome</nz-form-label>
-                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Minimo 6 caraters">
-                    <input nz-input formControlName="nome" placeholder="Nome completo" name="minlength" minlength="6" />
-                </nz-form-control>
-            </nz-form-item>
+    <section class="flex">
+        <div nz-col [nzSpan]="12">
+    <!-- FORM -->
 
-            <!-- Email -->
-            <nz-form-item>
-                <nz-form-label [nzSpan]="5">E-mail</nz-form-label>
-                <nz-form-control [nzSpan]="12">
-                  <input nz-input formControlName="email" placeholder="email" type="email" />
-                </nz-form-control>
-              </nz-form-item>
+    <form *ngIf="!formSubmitted" nzLayout="vertical" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <!-- Nome -->
+        <nz-form-item>
+            <nz-form-label [nzSpan]="5">Nome</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="24" nzErrorTip="Coloca um nome com pelo menos 6 carateres">
+                <input nz-input formControlName="nome" placeholder="Nome completo" name="minlength" minlength="6" />
+            </nz-form-control>
+        </nz-form-item>
 
-              <!-- Telemovel -->
+        <!-- Email -->
+        <nz-form-item>
+            <nz-form-label [nzSpan]="5">E-mail</nz-form-label>
+            <nz-form-control [nzSpan]="24">
+                <input nz-input formControlName="email" placeholder="email" type="email" />
+            </nz-form-control>
+        </nz-form-item>
 
-              <nz-form-item>
-                <nz-form-label [nzSpan]="5" nzFor="phoneNumber" nzRequired>Numero de telemovel</nz-form-label>
-                <nz-form-control
-                [nzSpan]="12"
-                  [nzValidateStatus]="validateForm.controls['tlm']"
-                  nzErrorTip="Please input your phone number!"
-                >
-                  <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+        <!-- Telemovel -->
+        <nz-form-item>
+            <nz-form-label [nzSpan]="5" nzFor="phoneNumber">Numero de telemóvel</nz-form-label>
+            <nz-form-control [nzSpan]="24" [nzValidateStatus]="validateForm.controls['tlm']"
+                nzErrorTip="Coloca o teu numero de telefone">
+                <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
                     <ng-template #addOnBeforeTemplate>
-                      <nz-select formControlName="tlm" class="phone-select">
-                        <nz-option nzLabel="+86" nzValue="+86"></nz-option>
-                        <nz-option nzLabel="+87" nzValue="+87"></nz-option>
-                      </nz-select>
+                        <nz-select formControlName="tlm" class="phone-select">
+                            <nz-option nzLabel="+351" nzValue="+351"></nz-option>
+                            <nz-option nzLabel="+86" nzValue="+86"></nz-option>
+                            <nz-option nzLabel="+87" nzValue="+87"></nz-option>
+                        </nz-select>
                     </ng-template>
                     <input formControlName="tlm" id="'tlm'" nz-input />
-                  </nz-input-group>
-                </nz-form-control>
-              </nz-form-item>
-        </form>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <!-- Situçao de emprego -->
+        <nz-form-item>
+            <nz-form-label [nzSpan]="5">Situação de emprego</nz-form-label>
+            <nz-form-control [nzValidateStatus]="validateForm.controls['situacao']"
+            nzErrorTip="Seleciona uma situação de emprego!" [nzSpan]="24">
+                <nz-radio-group formControlName="situacao" class="label_radio flex ">
+                    <label class="margin-8r-12b" nz-radio-button nzValue="A">Sem emprego e estou ativamente à
+                        procura</label>
+                    <label class="margin-8r-12b" nz-radio-button nzValue="B">Tenho trabalho mas estou à procura de outro
+                        emprego</label>
+                    <label class="margin-8r-12b" nz-radio-button nzValue="C">Tenho emprego e estou apenas a ver as
+                        oportunidades</label>
+                </nz-radio-group>
+            </nz-form-control>
+        </nz-form-item>
+
+
+        <!-- local de residencia -->
+        <nz-form-item>
+            <nz-form-label [nzSpan]="5">Local de residencia</nz-form-label>
+            <nz-form-control [nzValidateStatus]="validateForm.controls['local']"
+            nzErrorTip="Seleciona a tua zona de residencia!" [nzSpan]="24">
+                <nz-input-group class="margin-8r-12b" [nzSuffix]="locationIconTemplate">
+                    <input name="local" placeholder="Localização" nz-input [(ngModel)]="inputValue"
+                        (input)="onInput($event)" [nzAutocomplete]="auto" />
+                    <nz-autocomplete [nzDataSource]="locais" nzBackfill #auto></nz-autocomplete>
+
+                </nz-input-group>
+            </nz-form-control>
+            <ng-template #locationIconTemplate><fa-icon [icon]="faLocationDot"></fa-icon></ng-template>
+        </nz-form-item>
+
+
+        <!-- Curriculo Upload file -->
+        <nz-form-item>
+            <nz-form-label [nzSpan]="5">Curriculo</nz-form-label>
+            <nz-form-control [nzValidateStatus]="validateForm.controls['local']"
+            nzErrorTip="Faz upload do teu curriculo! (max 5MB)" [nzSpan]="24">
+                <nz-input-group>
+                <nz-upload nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" [nzFileList]="fileList"
+                    (nzChange)="handleChange($event)">
+                    <button nz-button>
+                        <span nz-icon nzType="upload"></span>
+                        Upload
+                    </button>
+                </nz-upload>
+
+                </nz-input-group>
+            </nz-form-control>
+            <ng-template #locationIconTemplate><fa-icon [icon]="faLocationDot"></fa-icon></ng-template>
+        </nz-form-item>
+
+        <!-- Submit button -->
+        <nz-form-item nz-row>
+            <nz-form-control>
+              <button nz-button nzType="primary">Candidatar-me</button>
+            </nz-form-control>
+          </nz-form-item>
+    </form>
+</div>
+<div nz-col [nzSpan]="12">
+        <img class="img_home" src="../../assets/contract-01.png"
+          alt="Ilustração de pessoas a olhar em volta com binoculus etc">
+</div>
+
+<div><nz-result *ngIf="showSuccess" nzStatus="success" nzTitle="Form submitted successfully!"></nz-result></div>
+</section>
 
 </div>

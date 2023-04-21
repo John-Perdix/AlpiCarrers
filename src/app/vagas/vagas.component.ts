@@ -201,22 +201,6 @@ checkOptionsThree = [
     console.log(this.filteredData);
   }
 
-  /* filterData4() {
-    this.filteredData = this.listOfData.filter((emprego) => {
-      let filter = true;
-
-      // Apply filter 2
-      if (this.checkOptionsTwo.length > 0) {
-        filter = this.checkOptionsThree.filter(
-          (item) => item.checked
-        ).some(
-          (item) => emprego.experiencia.indexOf(item.label) !== -1
-        ) && filter; // include filter from previous condition
-        console.log('filter 2' + filter);
-      }
-      return filter;
-    });
-  } */
 
   filterData4() {
     this.filteredData = this.listOfData.filter((emprego) => {

@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingComponent } from './landing/landing.component';
 import { VagasComponent } from './vagas/vagas.component';
 import { CandidaturaComponent } from './candidatura/candidatura.component';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
 
 /* FontAwesome Module */
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -39,6 +40,9 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzSliderModule } from 'ng-zorro-antd/slider';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzResultModule } from 'ng-zorro-antd/result';
+
 
 
 /* serachpipe Module */
@@ -84,6 +88,8 @@ registerLocaleData(pt);
     NzSliderModule,
     NzSelectModule,
     NzAutocompleteModule,
+    NzUploadModule,
+    NzResultModule,
 
     Ng2SearchPipeModule
     

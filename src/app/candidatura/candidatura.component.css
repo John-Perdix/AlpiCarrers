@@ -1,3 +1,13 @@
 .phone-select {
     width: 70px;
   }
+
+  .label_radio{
+    flex-direction: column;
+    max-width: max-content;
+  }
+
+  nz-form-item{
+    margin: 2em 0;
+  }
+  
