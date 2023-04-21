@@ -18,6 +18,10 @@
     align-items: center;
 }
 
+.align-end{
+  align-items: end;
+}
+
 .dir-col{
     flex-direction: column;
 }
@@ -90,7 +94,7 @@
   }
 
   .round_border{
-    border-radius: 3em;
+    border-radius: 1em;
   }
 
   .marquee{
@@ -125,6 +129,14 @@
     margin: 5px 8px 5px 8px;
     width: max-content;
   }
+
+  .jst-between{
+    justify-content: space-between;
+  }
+
+.margin{
+  margin: 0 3em;
+}
 
 
   @media only screen and (max-width: 768px) {

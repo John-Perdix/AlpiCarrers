@@ -33,6 +33,13 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzSliderModule } from 'ng-zorro-antd/slider';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
+
 
 /* serachpipe Module */
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -71,6 +78,12 @@ registerLocaleData(pt);
     NzTypographyModule,
     NzFormModule,
     NzBreadCrumbModule,
+    NzRadioModule,
+    NzCollapseModule,
+    NzCheckboxModule,
+    NzSliderModule,
+    NzSelectModule,
+    NzAutocompleteModule,
 
     Ng2SearchPipeModule
     

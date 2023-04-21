@@ -1,1 +1,51 @@
+<div class="wrapper">
+        <nz-breadcrumb>
+            <nz-breadcrumb-item>
+                <a onclick="window.location= ''">Home</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>Vagas</nz-breadcrumb-item>
+        </nz-breadcrumb>
 
+        <h1>Vagas</h1>
+        <!-- FORM -->
+
+        <form nzLayout="vertical" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+            <!-- Nome -->
+            <nz-form-item>
+                <nz-form-label [nzSpan]="5">Nome</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Minimo 6 caraters">
+                    <input nz-input formControlName="nome" placeholder="Nome completo" name="minlength" minlength="6" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <!-- Email -->
+            <nz-form-item>
+                <nz-form-label [nzSpan]="5">E-mail</nz-form-label>
+                <nz-form-control [nzSpan]="12">
+                  <input nz-input formControlName="email" placeholder="email" type="email" />
+                </nz-form-control>
+              </nz-form-item>
+
+              <!-- Telemovel -->
+
+              <nz-form-item>
+                <nz-form-label [nzSpan]="5" nzFor="phoneNumber" nzRequired>Numero de telemovel</nz-form-label>
+                <nz-form-control
+                [nzSpan]="12"
+                  [nzValidateStatus]="validateForm.controls['tlm']"
+                  nzErrorTip="Please input your phone number!"
+                >
+                  <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+                    <ng-template #addOnBeforeTemplate>
+                      <nz-select formControlName="tlm" class="phone-select">
+                        <nz-option nzLabel="+86" nzValue="+86"></nz-option>
+                        <nz-option nzLabel="+87" nzValue="+87"></nz-option>
+                      </nz-select>
+                    </ng-template>
+                    <input formControlName="tlm" id="'tlm'" nz-input />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+        </form>
+
+</div>
