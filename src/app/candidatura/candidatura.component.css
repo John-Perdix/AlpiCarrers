@@ -64,6 +64,7 @@
   form .ant-input-affix-wrapper>input.ant-input{
     box-shadow: none;
     background-color: #fff;
+    color: #000;
   } 
 
   .flex-wrap{

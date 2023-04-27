@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer } from 'rxjs'
+import { ActivatedRoute } from '@angular/router';
+
+;
 
 /* Serviço */
 import { EmpregosService } from '../empregos.service';
@@ -21,7 +24,11 @@ export class CandidaturaComponent implements OnInit {
   ngOnInit(): void {
     this.getEmprego();
     this.empregosService.generateRandomEmpregos();
+    this.data = history.state.data;
   }
+
+  data: any;
+
 
   validateForm: UntypedFormGroup;
   captchaTooltipIcon: NzFormTooltipIcon = {
@@ -76,22 +83,21 @@ export class CandidaturaComponent implements OnInit {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
         }
-        return;
       });
     }
     console.log('submit', this.validateForm.value);
   }
 
 
-  constructor(private fb: UntypedFormBuilder, private empregosService: EmpregosService) {
+  constructor(private route: ActivatedRoute, private fb: UntypedFormBuilder, private empregosService: EmpregosService) {
     this.validateForm = this.fb.group({
-      nome: ['', [Validators.required]],
+      nome: [null, [Validators.required, Validators.minLength(6)]],
       email: [null, [Validators.email, Validators.required]],
       tlm: [null, [Validators.required]],
       situacao: [null, [Validators.required]],
-      local: [null, [Validators.required]],
       morada:[null, [Validators.required]],
-      codigoPostal:[null, [Validators.required]],
+      codigoPostal1:[null, [Validators.required]],
+      codigoPostal2:[null, [Validators.required]],
       concelho:[null, [Validators.required]],
       localidade:[null, [Validators.required]],
       distrito:[null, [Validators.required]],

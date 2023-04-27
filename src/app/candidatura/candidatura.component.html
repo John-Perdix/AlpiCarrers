@@ -8,6 +8,7 @@
     </nz-breadcrumb>
 
     <h1>Candidatura</h1>
+    <h2>{{data.posicao}} na {{data.empresa}}</h2>
     </section>
 
     <section class="flex">
@@ -39,7 +40,7 @@
             <nz-form-control [nzValidateStatus]="validateForm.controls['tlm']"
                 nzErrorTip="Coloca o teu numero de telefone">
                 <nz-input-group>
-                    <input #tlm  (input)="onlyNumbers(tlm)" placeholder="91*******" formControlName="tlm" id="'tlm'" nz-input />
+                    <input #tlm (input)="onlyNumbers(tlm)" placeholder="91*******" formControlName="tlm" id="'tlm'" nz-input />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
@@ -70,7 +71,7 @@
             <nz-form-control [nzValidateStatus]="validateForm.controls['morada']"
             nzErrorTip="Seleciona a tua zona de residencia!">
                 <nz-input-group class="margin-8r-12b">
-                    <input nz-input placeholder="Rua exemplo nº123"/>
+                    <input formControlName="morada" nz-input placeholder="Rua exemplo nº123"/>
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
@@ -81,8 +82,8 @@
             <nz-form-control [nzValidateStatus]="validateForm.controls['codigoPostal']"
             nzErrorTip="Seleciona o teu código de postal!">
                 <nz-input-group class="margin-8r-12b">
-                    <input nz-col [nzXs]="14" [nzMd]="14" [nzLg]="14" [nzXl]="14" [nzXXl]="14" maxlength="4" #myInput nz-input (input)="onlyNumbers(myInput)" placeholder="3000"/>
-                    <input nz-col [nzXs]="10" [nzMd]="10" [nzLg]="10" [nzXl]="10" [nzXXl]="10" maxlength="3" #myInput nz-input (input)="onlyNumbers(myInput)" placeholder="123"/>
+                    <input formControlName="codigoPostal1" nz-col [nzXs]="14" [nzMd]="14" [nzLg]="14" [nzXl]="14" [nzXXl]="14" maxlength="4" #myInput nz-input (input)="onlyNumbers(myInput)" placeholder="3000"/>
+                    <input formControlName="codigoPostal2" nz-col [nzXs]="10" [nzMd]="10" [nzLg]="10" [nzXl]="10" [nzXXl]="10" maxlength="3" #myInput nz-input (input)="onlyNumbers(myInput)" placeholder="123"/>
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
@@ -93,7 +94,7 @@
             <nz-form-control [nzValidateStatus]="validateForm.controls['concelho']"
             nzErrorTip="Seleciona o teu concelho!">
                 <nz-input-group  class="margin-8r-12b">
-                    <input nz-input placeholder="Conselho"/>
+                    <input formControlName="concelho" nz-input placeholder="Conselho"/>
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
@@ -104,7 +105,7 @@
             <nz-form-control [nzValidateStatus]="validateForm.controls['localidade']"
             nzErrorTip="Seleciona a tua localidade!">
                 <nz-input-group class="margin-8r-12b">
-                    <input nz-input placeholder="localidade"/>
+                    <input formControlName="localidade" nz-input placeholder="localidade"/>
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
@@ -115,7 +116,7 @@
             <nz-form-control [nzValidateStatus]="validateForm.controls['distrito']"
             nzErrorTip="Seleciona a tua zona de residencia!">
                 <nz-input-group class="margin-8r-12b local-input" [nzSuffix]="locationIconTemplate">
-                    <input class="local-input-shd-none" name="local" placeholder="Distrito" nz-input [(ngModel)]="inputValue"
+                    <input formControlName="distrito" class="local-input-shd-none" name="local" placeholder="Distrito" nz-input [(ngModel)]="inputValue"
                         (input)="onInput($event)" [nzAutocomplete]="auto" />
                     <nz-autocomplete [nzDataSource]="locais" nzBackfill #auto></nz-autocomplete>
                 </nz-input-group>
@@ -136,7 +137,7 @@
             <nz-form-control [nzValidateStatus]="validateForm.controls['escolaridade']"
             nzErrorTip="Seleciona a tua escolaridade!">
                 <nz-input-group class="margin-8r-12b">
-                    <input nz-input placeholder="12º ano/ licenciado etc."/>
+                    <input formControlName="escolaridade" nz-input placeholder="12º ano/ licenciado etc."/>
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
@@ -147,7 +148,7 @@
             <nz-form-control [nzValidateStatus]="validateForm.controls['formacao']"
             nzErrorTip="Seleciona a tua area de formação!">
                 <nz-input-group class="margin-8r-12b">
-                    <input nz-input placeholder="Desinger gráfico/ engenheiro informático etc."/>
+                    <input formControlName="formacao" nz-input placeholder="Desinger gráfico/ engenheiro informático etc."/>
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
@@ -159,7 +160,7 @@
         <nz-form-control [nzValidateStatus]="validateForm.controls['curriculo']"
         nzErrorTip="Faz upload do teu curriculo! (max 5MB)" [nzSpan]="24">
             <nz-input-group>
-            <nz-upload nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" [nzFileList]="fileList"
+            <nz-upload formControlName="curriculo" nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" [nzFileList]="fileList"
                 (nzChange)="handleChange($event)">
                 <button nz-button>
                     <span nz-icon nzType="upload"></span>

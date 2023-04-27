@@ -167,7 +167,9 @@
           <p>
             {{ data.descricao }}
           </p>
-          <button class="btn-card" nz-button onclick="window.location= 'candidatura'" nzType="primary">Candidatar-me</button>
+          <!-- <button class="btn-card" nz-button onclick="window.location= 'candidatura'" nzType="primary">Candidatar-me</button>
+          <button class="btn-card" nz-button onclick="window.location= 'vagas'" nzType="default">Ver proposta</button> -->
+          <button class="btn-card" nz-button (click)="navigateToCandidatura(data)" nzType="primary">Candidatar-me</button>
           <button class="btn-card" nz-button onclick="window.location= 'vagas'" nzType="default">Ver proposta</button>
 
         </div>

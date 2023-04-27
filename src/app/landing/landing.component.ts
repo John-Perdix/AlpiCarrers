@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 /* Serviço */
@@ -21,6 +22,11 @@ import { NzButtonSize } from 'ng-zorro-antd/button';
 export class LandingComponent implements OnInit {
    
 
+
+
+  navigateToCandidatura(data: any) {
+    this.router.navigate(['/candidatura'], { state: { data: data } });
+  }
   
   validateForm!: UntypedFormGroup;
   firstThreeEmpregos: Emprego[] = [];
@@ -39,7 +45,7 @@ export class LandingComponent implements OnInit {
     this.firstThreeEmpregos = this.empregosService.getEmpregoSlice();
   }
 
-  constructor(private empregosService: EmpregosService) {}
+  constructor(private empregosService: EmpregosService, private router: Router){}
 
   /* search-module var */
   searchEmprego: any;
