@@ -42,7 +42,6 @@
 
   .grey-bkg{
     background-color: #ECEFF2;
-    padding: 1em 3em;
   }
 
   section {
@@ -56,25 +55,29 @@
   }
 
   .home h1{
-    font-size: 4em;
+    font-size: clamp(2em, 8vw, 4em);
+    /* font-size: 4em; */
     font-weight: 900;
     color: #D85F35;
   }
 
   .home h2{
-    font-size: 3em;
+    font-size: clamp(1.5em, 8vw, 3em);
+    /* font-size: 3em; */
     font-weight: 500;
     color: #E4997F;
   }
 
   h1 {
-    font-size: 3em;
+    /* font-size: 3em; */
+    font-size: clamp(2em, 8vw, 4em);
     font-weight: 700;
     color: #D85F35;
   }
 
   h2{
-    font-size: 2em;
+    font-size: clamp(1em, 8vw, 2em);
+    /* font-size: 2em; */
     font-weight: 500;
     color: #E4997F;
   }
@@ -123,6 +126,8 @@
     display: flex;
     justify-content: space-between;
     border-radius: 3em;
+    height: auto;
+    white-space: normal;
   }
 
   .ant-tag{
@@ -138,6 +143,157 @@
   margin: 0 3em;
 }
 
+/* Butões */
+.ant-btn-primary {
+  /* padding: 7px 25px 30px 25px; */
+  border-radius: 25px;
+  background-color: #D85F35;
+  border-color: #D85F35;
+  color: #fff;
+
+  /* Shadow */
+-webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+-moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+}
+
+
+.ant-btn-primary:hover {
+  background-color: #bd4c26;
+  border-color: #bd4c26;
+  color: #fff;
+}
+
+
+.ant-btn {
+  border-radius: 25px;
+  border-color: #D85F35;
+  border-radius: 25px;
+
+  /* Shadow */
+-webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+-moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+}
+
+
+.ant-btn:hover {
+  background-color: #bd4c26;
+  border-color: #bd4c26;
+  color: #fff;
+}
+
+.hero-btn-padd{
+  padding: 15px 25px 33px 25px;
+}
+
+.ant-btn-group>.ant-btn:only-child{
+  border-radius: 25px;
+  padding: 25px 30px 25px 30px;
+}
+
+/* Search bar */
+.ant-input-affix-wrapper{
+  border-radius: 25px;
+  background-color: #D85F35;
+  border-color: #D85F35;
+  border-radius: 25px;
+  color: #fff;
+  padding: 10px 15px;
+
+  /* Shadow */
+-webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+-moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+}
+
+.newsletter-input, .local-input{
+  border-radius: 25px;
+  background-color: #fff;
+  border-color: #D85F35;
+  border-radius: 25px;
+  color: #fff;
+  padding: 10px 15px;
+
+  /* Shadow */
+-webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+-moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover{
+  border-radius: 25px;
+  border-color: rgba(136,35,0,1);
+}
+
+.ant-input-affix-wrapper:focus{
+  border-color: #D85F35;
+  box-shadow: 0 0 0 2px rgba(136,35,0,1);
+  border-right-width: 1px;
+  outline: 0;
+}
+
+.ant-input-affix-wrapper>input.ant-input {
+  background-color: #D85F35;
+  border-color: #D85F35;
+  border-radius: 25px;
+  color: #fff;
+}
+
+/* Table */
+.ant-table{
+  background: none;
+  overflow-x:auto;
+}
+
+.ant-table-thead>tr>th{
+  background: none;
+  border-bottom: solid 2px#D85F35;
+  text-align: center;
+}
+
+.ant-table-tbody>tr>td {
+  border-bottom: solid 1px #D85F35;
+}
+
+table{
+  border-color: none;
+}
+
+.ant-input-group-addon {
+  background-color: #D85F35;
+  border-color: #D85F35;
+  border-radius: 25px;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-active, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-open, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-selected, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item:hover, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu-active, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu-open, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu-selected, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu:hover, .ant-menu-submenu:hover>.ant-menu-submenu-title>.ant-menu-submenu-arrow, .ant-menu-submenu:hover>.ant-menu-submenu-title>.ant-menu-submenu-expand-icon, .ant-menu-vertical .ant-menu-submenu-selected, .ant-menu-vertical-left .ant-menu-submenu-selected, .ant-menu-vertical-right .ant-menu-submenu-selected{
+  color: #D85F35;
+}
+
+.ant-menu-horizontal>.ant-menu-item::after, .ant-menu-horizontal>.ant-menu-submenu::after:hover{
+  border-color: #D85F35;
+}
+
+.ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-active::after, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-open::after, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item-selected::after, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-item:hover::after, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu-active::after, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu-open::after, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu-selected::after, .ant-menu-horizontal:not(.ant-menu-dark)>.ant-menu-submenu:hover::after {
+  border-bottom: 2px solid #D85F35;
+}
+
+.max-hgt-content{
+  max-height: max-content;
+}
+
+.margin-top-bottom{
+  margin: 20px 0;
+}
+
+.padding-header{
+  padding: 1em 3em 0;
+}
+
+.padding{
+  padding: 1em 3em;
+}
+
 
   @media only screen and (max-width: 768px) {
     /* For mobile phones: */
@@ -145,11 +301,49 @@
       flex-direction: column-reverse;
     }
 
-    [class*="flex"] {
+    [class*="colum"] {
       flex-direction: column;
+    }
+
+    [class*="row"] {
+      flex-direction: row;
+      flex-wrap: wrap;
     }
 
     [class*="reverse-direction"] {
       flex-direction: column-reverse;
     }
+
+    [class*="btn-card"] {
+      width: max-content;
+      width: 100%;
+    }
+
+
+    [class*="margin-top-media"] {
+      margin-top: 2em;
+    }
+  }
+
+
+  @media only screen and (max-width: 1200px) {
+    /* For mobile phones: */
+
+    [class*="coluna"] {
+      flex-direction: column;
+    }
+    
+
+    [class*="margin-top-media"] {
+      margin-top: 2em;
+    }
+
+    /* header */
+[class="ant-layout-header[_ngcontent-uwv-c107]"]{
+  height: 150px;
+}
+
+[class*="cards-responsive"] {
+  flex-direction: column;
+}
   }

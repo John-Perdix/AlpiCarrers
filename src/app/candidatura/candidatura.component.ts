@@ -48,21 +48,7 @@ export class CandidaturaComponent implements OnInit {
       }
     }
   }
-
-  /* 
-  Dados pessoais:
-  Nome
-  email
-  numero tlm
-  Situação de emprego
-  cidade em que reside
-
-  curriculo
-  portfolio optional
-  Os skills mais importantes
-
-  job info
-  */
+  
   locais = this.empregosService.locais;
   inputValue = '';
 
@@ -85,10 +71,12 @@ export class CandidaturaComponent implements OnInit {
       this.formSubmitted = true;
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
+        
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
         }
+        return;
       });
     }
     console.log('submit', this.validateForm.value);
@@ -100,9 +88,16 @@ export class CandidaturaComponent implements OnInit {
       nome: ['', [Validators.required]],
       email: [null, [Validators.email, Validators.required]],
       tlm: [null, [Validators.required]],
-      phoneNumberPrefix: ['+351'],
       situacao: [null, [Validators.required]],
       local: [null, [Validators.required]],
+      morada:[null, [Validators.required]],
+      codigoPostal:[null, [Validators.required]],
+      concelho:[null, [Validators.required]],
+      localidade:[null, [Validators.required]],
+      distrito:[null, [Validators.required]],
+      escolaridade:[null, [Validators.required]],
+      formacao:[null, [Validators.required]],
+      curriculo:[null, [Validators.required]],
     });
     
   }
@@ -131,5 +126,23 @@ export class CandidaturaComponent implements OnInit {
     });
 
     this.fileList = fileList;
+  }
+
+  onlyNumbers(inputElement: HTMLInputElement): void {
+    inputElement.value = inputElement.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+  }
+
+  addSpace() {
+    let input = document.getElementById("codigoPostal") as HTMLInputElement;
+    console.log('addSpace called');
+  
+    input.onkeydown = function () {
+        if (input.value.length > 0) {
+            if (input.value.length % 4 === 0) {
+              console.log('trigger');
+                input.value += "-";
+            }
+        }
+    };
   }
 }

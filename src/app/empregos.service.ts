@@ -35,7 +35,7 @@ export interface Emprego {
 export class EmpregosService {
   /* Gerar empregos aleatórios */
   listOfData: Emprego[] = [];
-  firstFiveEmpregos  = [];
+  firstThreeEmpregos: Emprego[] = [];
   descricoes = ['Prototipagem para as plataformas web e mobile da revolut', 'Desenvolvimento de animações para o interface das apps. Deve estar completamente à vontade com conceitos como modelação, animacão, materiais e shading.', 'Create appealing UI across multiple titles, in development and live, working directly with the Art Director.', 'Um designer gráfico é responsável por criar elementos visuais que comunicam uma mensagem ou ideia específica. Isso pode incluir logotipos, layouts, gráficos, ilustrações, tipografia e muito mais. Eles usam software de design para criar e manipular imagens e outros elementos gráficos.', 'Um web designer de UX-UI trabalha no design da interface do usuário de um site ou aplicativo, garantindo que a experiência do usuário seja intuitiva e agradável. Eles criam wireframes, protótipos e designs finais usando ferramentas de design e colaboram com desenvolvedores para garantir que a implementação do design seja precisa.', 'Um desenvolvedor front-end trabalha na parte do site ou aplicativo que os usuários interagem diretamente, como botões, menus e outros elementos da interface do usuário. Eles usam linguagens como HTML, CSS e JavaScript para criar páginas da web interativas e responsivas.', 'Um desenvolvedor back-end trabalha na parte do site ou aplicativo que os usuários não veem, como o servidor e o banco de dados. Eles usam linguagens de programação como Python, Ruby e Java para criar aplicativos escaláveis ​​e eficientes que gerenciam dados e processos de negócios.', ' Um desenvolvedor full-stack tem habilidades em ambos os lados do desenvolvimento de aplicativos - front-end e back-end. Eles podem construir um aplicativo completo do início ao fim, desde a interface do usuário até o servidor e o banco de dados.', 'Um animador ou designer de motion trabalha na criação de animações e gráficos em movimento para uma variedade de projetos, incluindo anúncios publicitários, vídeos, jogos e outros tipos de mídia. Eles usam software de animação e gráficos em movimento para criar designs atraentes e interativos que prendem a atenção do público.'];
   posicoes = ['Web designer', 'Developer', 'Product designer', 'Graphic designer', 'Full stack developer', 'Motion designer', 'Front-end developer', 'back-end developer']
   empresas = ['div.pt', 'Revolut', 'Intel', 'Bliss Applications', 'Burocratik', 'DigitalWorks', 'Wingman', 'Novagest', 'ExcentricGrey', 'Nm Design', 'BySide', 'Avanade', 'Pixelmatters']
@@ -107,9 +107,9 @@ value_min = 800;
       };
       this.listOfData.push(emprego);
     }
-    /* this.firstFiveEmpregos = this.list.slice(0, 5); */
+    this.firstThreeEmpregos = this.listOfData.slice(0, 3);
   }
- 
+
   /* getRandomSkills() {
     const numSkills = Math.floor(Math.random() * 5) + 5; // generates a random number between 5 and 10
     const skills_random = [];
@@ -238,5 +238,10 @@ value_min = 800;
 
   getEmprego(): Emprego[] {
     return this.listOfData;
+  }
+
+
+  getEmpregoSlice(): Emprego[] {
+    return this.firstThreeEmpregos;
   }
 }

@@ -31,13 +31,13 @@ export class VagasComponent implements OnInit {
   onInput(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
     this.locais = value ? [value, value + value, value + value + value] : [];
+    this.filterData3();
   }
   locais = this.empregosService.locais;
 
   getEmprego(): void {
     this.listOfData = this.empregosService.getEmprego();
   }
-
 
   listOfData: Emprego[] = [];
 
@@ -134,101 +134,128 @@ export class VagasComponent implements OnInit {
 ];
 
 
-checkOptionsThree = [
+checkOptionsExperiencia = [
   { label: 'Junior', value: 'junior', checked: false },
   { label: 'Intermedio', value: 'intermedio', checked: false },
   { label: 'Senior', value: 'senior', checked: false }
 ];
 
+checkOptionsLocal = [
+  { label: 'Aveiro', value: 'Aveiro', checked: false },
+  { label: 'Beja', value: 'Beja', checked: false },
+  { label: 'Braga', value: 'Braga', checked: false },
+  { label: 'Bragança', value: 'Bragança', checked: false },
+  { label: 'Castelo Branco', value: 'Castelo Branco', checked: false },
+  { label: 'Coimbra', value: 'Coimbra', checked: false },
+  { label: 'Évora', value: 'Évora', checked: false },
+  { label: 'Faro', value: 'Faro', checked: false },
+  { label: 'Guarda', value: 'Guarda', checked: false },
+  { label: 'Leiria', value: 'Leiria', checked: false },
+  { label: 'Lisboa', value: 'Lisboa', checked: false },
+  { label: 'Portalegre', value: 'Portalegre', checked: false },
+  { label: 'Porto', value: 'Porto', checked: false },
+  { label: 'Santarém', value: 'Santarém', checked: false },
+  { label: 'Setúbal', value: 'Setúbal', checked: false },
+  { label: 'Viana do Castelo', value: 'Viana do Castelo', checked: false },
+  { label: 'Vila Real', value: 'Vila Real', checked: false },
+  { label: 'Viseu', value: 'Viseu', checked: false }
+];
 
-  updateSingleChecked(): void {
-    if (this.checkOptionsOne.every(item => !item.checked)) {
-      this.allChecked = false;
-      this.indeterminate = false;
-    } else if (this.checkOptionsOne.every(item => item.checked)) {
-      this.allChecked = true;
-      this.indeterminate = false;
-    } else {
-      this.indeterminate = true;
-    }
-  }
 
 
   /* Data filtering functions */
 
   filteredData: Emprego[] = [];
-
+  /* Filtro politica */
   filterData() {
-    this.filteredData = this.listOfData.filter((emprego) => {
-      let filter = true;
-      // Apply filter 1
-      if (this.checkOptionsOne.length > 0) {
-        filter = this.checkOptionsOne.filter(
-          (item) => item.checked
-        ).some(
-          (item) => emprego.politica.indexOf(item.label) !== -1
-        );
-        console.log('filter 1' + filter);
-      }
-
-      return filter;
-    });
-    console.log("Applying filter 1...");
-    console.log('A função filterData() foi chamada');
-    console.log(this.checkOptionsOne);
-    console.log(this.filteredData);
+    const checkedOptions = this.checkOptionsOne.filter(item => item.checked);
+  
+    this.filteredData = checkedOptions.length === 0
+      ? this.listOfData
+      : this.listOfData.filter((emprego) => {
+          let filter = checkedOptions.some(
+            (item) => emprego.politica.indexOf(item.label) !== -1
+          );
+          console.log('filter 1' + filter);
+          return filter;
+        });
   }
 
+  /* filtro Area */
   filterData2() {
-    this.filteredData = this.listOfData.filter((emprego) => {
-      let filter = true;
-
-      // Apply filter 2
-      if (this.checkOptionsTwo.length > 0) {
-        filter = this.checkOptionsTwo.filter(
-          (item) => item.checked
-        ).some(
-          (item) => emprego.area.indexOf(item.label) !== -1
-        ) && filter; // include filter from previous condition
-        console.log('filter 2' + filter);
-      }
-      return filter;
-    });
-
-    console.log("Applying filter 2...");
-    console.log(this.checkOptionsTwo);
-    console.log('A função filterData2() foi chamada');
-    console.log(this.filteredData);
+    const checkedOptions = this.checkOptionsTwo.filter(item => item.checked);
+  
+    this.filteredData = checkedOptions.length === 0
+      ? this.listOfData
+      : this.listOfData.filter((emprego) => {
+          let filter = checkedOptions.some(
+            (item) => emprego.area.indexOf(item.label) !== -1
+          );
+          console.log('filter 1' + filter);
+          return filter;
+        });
   }
 
-
-  filterData4() {
-    this.filteredData = this.listOfData.filter((emprego) => {
-      let filter = true;
-      // Check if any option is selected
-      const selectedOptions = this.checkOptionsThree.filter(option => option.checked);
-      if (selectedOptions.length > 0) {
-        filter = selectedOptions.some(option => emprego.experiencia.indexOf(option.value) !== -1);
-      }
-      return filter;
+  /* filtro local */
+  filterData3() {
+    this.filteredData = this.listOfData.filter((item) => {
+      return item.local.toLowerCase().indexOf(this.inputValue.toLowerCase()) !== -1;
     });
-    console.log("Applying filter 4...");
-    console.log(this.checkOptionsThree);
-    console.log('A função filterData4() foi chamada');
-    console.log(this.filteredData);
+  }
+  
+  /* filtro salário */
+  filterData4() {
+    this.filteredData = this.listOfData.filter(item => {
+      console.log(this.value[0] && this.value[1]);
+      console.log(this.tags)
+
+      /* update and slice the tags values for salario */
+      this.tags = [`${this.value[0]}€ - ${this.value[1]}€`, ...this.tags.slice(1)];
+      
+
+      /* Return a data filters */
+      return item.salario >= this.value[0] && item.salario <= this.value[1];
+
+    });
+  }
+
+  /* filtro Experiencia */
+  filterData5() {
+    try {
+      console.log('filterData5() called');
+  
+      const checkedOptions = this.checkOptionsExperiencia.filter(item => item.checked);
+      console.log('checkedOptions:', checkedOptions);
+      console.log('checkedOptions lenght: ', checkedOptions.length);
+    
+      this.filteredData = checkedOptions.length === 0
+        ? this.listOfData
+        : this.listOfData.filter((emprego) => {
+            let filter = checkedOptions.some(
+              (item) => emprego.experiencia.indexOf(item.label) !== -1
+            );
+            return filter;
+          });
+    } catch (error) {
+      console.error(error);
+    }
   }
   
 
 
   /* data filtering tags */
 
-  tags = ['Empregos', 'Tag 2', 'Tag 3'];
+  tags: string[] = [this.value_min + '€ - ' + this.value_max + '€'];
   inputVisible = false;
   inputValue = '';
   @ViewChild('inputElement', { static: false }) inputElement?: ElementRef;
 
-  handleClose(removedTag: {}): void {
+  /* handleClose(removedTag: {}): void {
     this.tags = this.tags.filter(tag => tag !== removedTag);
+  } */
+  handleClose(removedTag: string): void {
+    this.tags = this.tags.filter(tag => tag !== removedTag);
+    this.filterData();
   }
 
   sliceTagName(tag: string): string {
@@ -250,4 +277,53 @@ checkOptionsThree = [
     this.inputValue = '';
     this.inputVisible = false;
   }
+  
+  updateSingleChecked(): void {
+    /* Cheked 1 */
+    const checkedCount = this.checkOptionsOne.filter(item => item.checked).length;
+    this.allChecked = checkedCount === this.checkOptionsOne.length;
+    this.indeterminate = checkedCount > 0 && checkedCount < this.checkOptionsOne.length;
+
+    /* Cheked 2 */
+    const checkedCount2 = this.checkOptionsTwo.filter(item => item.checked).length;
+    this.allChecked = checkedCount2 === this.checkOptionsTwo.length;
+    this.indeterminate = checkedCount2 > 0 && checkedCount2 < this.checkOptionsTwo.length;
+
+   
+
+  
+    // Add tag if a checkbox is checked and tag doesn't exist
+    if (checkedCount > 0) {
+      const checkedValuesOne = this.checkOptionsOne.filter(item => item.checked).map(item => item.label);
+      /* Cheked 1 */
+      checkedValuesOne.forEach(value => {
+        if (!this.tags.includes(value)) {
+          this.tags.push(value);
+        }
+      });
+    }
+
+    /* Checked 2 */
+    if (checkedCount2 > 0) {
+      const checkedValuesTwo = this.checkOptionsTwo.filter(item => item.checked).map(item => item.label);
+    checkedValuesTwo.forEach(value => {
+      if (!this.tags.includes(value)) {
+        this.tags.push(value);
+      }
+    });
+  }
+
+/* Checked 3 */
+if (checkedCount2 > 0) {
+  const checkedValuesTwo = this.checkOptionsTwo.filter(item => item.checked).map(item => item.label);
+checkedValuesTwo.forEach(value => {
+  if (!this.tags.includes(value)) {
+    this.tags.push(value);
+  }
+});
+}
+  }
+  
+  
+  
 }

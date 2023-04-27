@@ -11,12 +11,19 @@ body{
     line-height: 64px;
   }
 
+  nz-header{
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    z-index: 20;
+  }
+
   nz-breadcrumb {
     margin: 16px 0;
   }
 
   nz-content {
-    padding: 0 50px;
+    padding: 0 20px;
   }
 
   nz-footer {
@@ -42,17 +49,13 @@ body{
     padding: 2em 1em;
   }
 
-  .grey-bkg{
-    background-color: #ECEFF2;
-    padding: 1em 3em;
-  }
-
   .ant-menu{
     background-color: #ECEFF2;
   }
 
 .nav-border{
   border-bottom: solid 2px #D85F35;
+  height: max-content;
 }
 
 .jst-spc-between{

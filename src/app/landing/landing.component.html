@@ -9,8 +9,8 @@
         <p>Se queres ficar a saber mais sobre a nossa forma de recrutamento clica aqui</p>
       </div>
       <div>
-        <button nz-button onclick="window.location= 'candidatura'" nzType="primary">Candidatar-me</button>
-        <button nz-button onclick="window.location= 'vagas'" nzType="default">Carreiras disponiveis</button>
+        <button nz-button class="hero-btn-padd" onclick="window.location= 'candidatura'" nzType="primary">Candidatar-me</button>
+        <button nz-button class="hero-btn-padd" onclick="window.location= 'vagas'" nzType="default">Carreiras disponiveis</button>
       </div>
     </div>
 
@@ -30,17 +30,17 @@
 
 
 <!-- Empregos section -->
-  <section class="grey-bkg round_border">
+  <section class="grey-bkg padding round_border">
     <h1>Procurar emprego</h1>
-    <div class="flex" nz-row [nzGutter]="16">
-    <div class="child" nz-col nzSpan="12">
+    <div class="flex colum coluna" nz-row [nzGutter]="16">
+    <div class="child" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12" [nzXXl]="12">
       <nz-input-group class="margin-8r-12b" [nzSuffix]="searchIconTemplate">
         <input [(ngModel)]="searchEmprego" type="text" nz-input placeholder="Posição/ Empresa/ Area/ Local/ Política"/>
       </nz-input-group>
 
       <ng-template #searchIconTemplate><span nz-icon nzType="search" nzTheme="outline"></span></ng-template>
 
-      <nz-table nzSpan="24" #basicTable [nzData]="listOfData">
+      <nz-table [nzShowPagination]=" 'false'" #basicTable [nzData]="firstThreeEmpregos">
         <thead>
           <tr>
             <th>Posição</th>
@@ -62,7 +62,7 @@
       </nz-table>
     </div>
 
-    <div class="child flex dir-col" nz-col [nzSpan]="24" [nzXs]="24" [nzMd]="12" [nzLg]="12">
+    <div class="child flex colum dir-col margin-top-media" nz-col [nzSpan]="24" [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12" [nzXXl]="12">
 
       <nz-button-group [nzSize]="size">
         <button class="button-full" nz-button nzType="default">
@@ -98,9 +98,9 @@
 
 
   <!-- information section -->
-  <section class="flex dir-col">
+  <section class="flex colum dir-col">
     <h1>Maximiza as tuas oportunidades</h1>
-    <div class="flex">
+    <div class="flex colum">
       <div class="child" nz-col [nzSpan]="24" [nzXs]="24" [nzMd]="12" [nzLg]="12">
         <img class="img_home" src="../../assets/organize.png"
           alt="Ilustração de pessoas a olhar em volta com binoculus etc">
@@ -115,7 +115,7 @@
       </div>
     </div>
 
-    <div class="flex reverse-direction">
+    <div class="flex colum reverse-direction">
 
       <div class="child" nz-col [nzSpan]="24" [nzXs]="24" [nzMd]="12" [nzLg]="12">
         <div>
@@ -135,13 +135,13 @@
 
 
   <!-- CARDS -->
-  <section nz-col nzSpan="24">
+  <section nz-col [nzSpan]="24" [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24" [nzXXl]="24">
     <h1>Vagas em destaque</h1>
 
-    <nz-table #basiccard [nzData]="listOfData" nzFrontPagination="false">
+    <nz-table  class="wrapper cards-responsive" #basiccard [nzData]="firstThreeEmpregos" nzFrontPagination="false">
       
-      <nz-card class="grey-bkg flex margin-8r-12b round_border" *ngFor="let data of basiccard.data">
-        <div class="align-center flex margin-8r-12b">
+      <nz-card class="grey-bkg padding flex colum margin-top-bottom round_border" *ngFor="let data of basiccard.data">
+        <div class="align-center flex colum margin-8r-12b">
           <div class="margin-8r-12b">
             <img class="img_home" src="{{ data.imagem }}" alt="Logoimagem da div.pt">
           </div>
@@ -156,7 +156,7 @@
         </div>
 
         <div>
-          <div class="flex margin-8r-12b">
+          <div class="flex row colum margin-8r-12b">
             <ng-container *ngFor="let skill of data.skills | keyvalue">
               <ng-container *ngIf="skill.value.trim() !== ''">
                 <nz-tag [nzColor]="color">{{ skill.value }}</nz-tag>
@@ -167,8 +167,8 @@
           <p>
             {{ data.descricao }}
           </p>
-          <button nz-button onclick="window.location= 'candidatura'" nzType="primary">Candidatar-me</button>
-          <button nz-button onclick="window.location= 'vagas'" nzType="default">Ver proposta</button>
+          <button class="btn-card" nz-button onclick="window.location= 'candidatura'" nzType="primary">Candidatar-me</button>
+          <button class="btn-card" nz-button onclick="window.location= 'vagas'" nzType="default">Ver proposta</button>
 
         </div>
       </nz-card>

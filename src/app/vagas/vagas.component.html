@@ -17,26 +17,12 @@
       *ngFor="let tag of tags; let i = index"
       [nzMode]="i === 0 ? 'default' : 'closeable'"
       (nzOnClose)="handleClose(tag)"
+      
     >
       {{ sliceTagName(tag) }}
     </nz-tag>
 
-  <nz-tag *ngIf="!inputVisible" class="editable-tag" nzNoAnimation (click)="showInput()">
-    <span nz-icon nzType="plus"></span>
-    New Tag
-  </nz-tag>
-
-    <input
-      #inputElement
-      nz-input
-      nzSize="small"
-      *ngIf="inputVisible"
-      type="text"
-      [(ngModel)]="inputValue"
-      style="width: 78px;"
-      (blur)="handleInputConfirm()"
-      (keydown.enter)="handleInputConfirm()"
-    />
+    
   </div>
   <div nz-col nzSpan="2">
     <label nz-typography nzType="secondary" for="pageSize">Items por página</label>
@@ -52,7 +38,7 @@
   <div class="flex">
 
     <!-- Sider -->
-    <section nz-col nzSpan="6" class="sider round_border mg-0 pd-top-0">
+    <section nz-col [nzXs]="24" [nzMd]="6" [nzLg]="6" [nzXl]="6" [nzXXl]="6"  class="sider round_border mg-0 pd-top-0">
 
       <!-- Colapse 1- Política -->
       <nz-collapse>
@@ -99,35 +85,31 @@
       <nz-collapse>
         <nz-collapse-panel [nzActive]="true" [nzHeader]="panel4">
           <label nz-typography nzType="secondary" for="slider">Salário por mês |  (moeda: €)</label>
-          <nz-slider name="slider" [nzStep]="100" [nzMarks]="marks" [nzMax]="value_max" [nzMin]="value_min" nzRange [(ngModel)]="value"></nz-slider>
+          <nz-slider name="slider" [nzStep]="100" [nzMarks]="marks" [nzMax]="value_max" [nzMin]="value_min" nzRange [(ngModel)]="value" (nzOnAfterChange)="filterData4()"></nz-slider>
         </nz-collapse-panel>
       </nz-collapse>
       <ng-template #panel4>Salário</ng-template>
 
-      <!-- Colapse 5 -->
-      <!-- <nz-collapse>
-        <nz-collapse-panel [nzActive]="true" [nzHeader]="panel5">
-          <label nz-typography nzType="secondary" for="experiencia">Escolhe a tua experiencia</label>
-          <nz-select [(ngModel)]="checkOptionsThree" (ngModelChange)="filterData4()" name="experiencia">
-            <nz-option *ngFor="let item of checkOptionsThree" [nzValue]="item.value" [nzLabel]="item.label"></nz-option> -->
-           <!--  <nz-option nzValue="todos" nzLabel="Todos" selected></nz-option>
-            <nz-option nzValue="junior" nzLabel="Junior"></nz-option>
-            <nz-option nzValue="intermedio" nzLabel="Intermedio"></nz-option>
-            <nz-option nzValue="senior" nzLabel="Senior"></nz-option> -->
-          <!-- </nz-select>
-        </nz-collapse-panel>
-      </nz-collapse>
-      <ng-template #panel5>Experiencia</ng-template> -->
+      <!-- Colapse 5- Experiencia -->
 
       <nz-collapse>
         <nz-collapse-panel [nzActive]="true" [nzHeader]="panel5">
           <label nz-typography nzType="secondary" for="experiencia">Escolhe a tua experiencia</label>
-          <nz-select nzMode="multiple" [(ngModel)]="checkOptionsThree" (ngModelChange)="filterData4()" name="experiencia">
-            <nz-option *ngFor="let item of checkOptionsThree" [nzValue]="item.value" [nzLabel]="item.label"></nz-option>
-          </nz-select>
+          <nz-checkbox-group [(ngModel)]="checkOptionsExperiencia" (ngModelChange)="filterData5()">
+            <label *ngFor="let item of checkOptionsExperiencia" nz-checkbox [nzValue]="item.value">{{item.label}}</label>
+          </nz-checkbox-group>
         </nz-collapse-panel>
       </nz-collapse>
       <ng-template #panel5>Experiencia</ng-template>
+      <!-- <nz-collapse>
+        <nz-collapse-panel [nzActive]="true" [nzHeader]="panel5">
+          <label nz-typography nzType="secondary" for="experiencia">Escolhe a tua experiencia</label>
+          <nz-select nzMode="multiple" [(ngModel)]="checkOptionsExperiencia" (ngModelChange)="filterData4()" name="experiencia">
+            <nz-option *ngFor="let item of checkOptionsExperiencia" [nzValue]="item.value" [nzLabel]="item.label"></nz-option>
+          </nz-select>
+        </nz-collapse-panel>
+      </nz-collapse>
+      <ng-template #panel5>Experiencia</ng-template> -->
     </section>
 
     <!-- Empregos Cards -->

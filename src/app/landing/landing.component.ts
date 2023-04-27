@@ -23,16 +23,21 @@ export class LandingComponent implements OnInit {
 
   
   validateForm!: UntypedFormGroup;
+  firstThreeEmpregos: Emprego[] = [];
+  listOfData: Emprego[] = [];
 
   ngOnInit(): void {
     this.getEmprego();
+    this.getEmpregoSlice();
   }
 
   getEmprego(): void {
     this.listOfData = this.empregosService.getEmprego();
   }
 
-  listOfData: Emprego[] = [];
+  getEmpregoSlice(): void {
+    this.firstThreeEmpregos = this.empregosService.getEmpregoSlice();
+  }
 
   constructor(private empregosService: EmpregosService) {}
 

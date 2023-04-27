@@ -11,49 +11,44 @@
     </section>
 
     <section class="flex">
-        <div nz-col [nzSpan]="12">
+        <div nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12" [nzXXl]="12">
     <!-- FORM -->
 
     <form *ngIf="!formSubmitted" nzLayout="vertical" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <div>
+            <nz-divider nzOrientation="left" nzText="Dados pessoais"></nz-divider>
         <!-- Nome -->
-        <nz-form-item>
-            <nz-form-label [nzSpan]="5">Nome</nz-form-label>
+        <nz-form-item  nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24" [nzXXl]="24">
+            <nz-form-label>Nome</nz-form-label>
             <nz-form-control nzHasFeedback [nzSpan]="24" nzErrorTip="Coloca um nome com pelo menos 6 carateres">
                 <input nz-input formControlName="nome" placeholder="Nome completo" name="minlength" minlength="6" />
             </nz-form-control>
         </nz-form-item>
 
         <!-- Email -->
-        <nz-form-item>
-            <nz-form-label [nzSpan]="5">E-mail</nz-form-label>
-            <nz-form-control [nzSpan]="24">
-                <input nz-input formControlName="email" placeholder="email" type="email" />
+        <nz-form-item  nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24" [nzXXl]="24">
+            <nz-form-label>Email</nz-form-label>
+            <nz-form-control>
+                <input nz-input formControlName="email" placeholder="exemplo@exemplo.com" type="email" />
             </nz-form-control>
         </nz-form-item>
 
         <!-- Telemovel -->
-        <nz-form-item>
-            <nz-form-label [nzSpan]="5" nzFor="phoneNumber">Numero de telemóvel</nz-form-label>
-            <nz-form-control [nzSpan]="24" [nzValidateStatus]="validateForm.controls['tlm']"
+        <nz-form-item  nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24" [nzXXl]="24">
+            <nz-form-label nzFor="phoneNumber">Numero de telemóvel</nz-form-label>
+            <nz-form-control [nzValidateStatus]="validateForm.controls['tlm']"
                 nzErrorTip="Coloca o teu numero de telefone">
-                <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
-                    <ng-template #addOnBeforeTemplate>
-                        <nz-select formControlName="tlm" class="phone-select">
-                            <nz-option nzLabel="+351" nzValue="+351"></nz-option>
-                            <nz-option nzLabel="+86" nzValue="+86"></nz-option>
-                            <nz-option nzLabel="+87" nzValue="+87"></nz-option>
-                        </nz-select>
-                    </ng-template>
-                    <input formControlName="tlm" id="'tlm'" nz-input />
+                <nz-input-group>
+                    <input #tlm  (input)="onlyNumbers(tlm)" placeholder="91*******" formControlName="tlm" id="'tlm'" nz-input />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
 
         <!-- Situçao de emprego -->
         <nz-form-item>
-            <nz-form-label [nzSpan]="5">Situação de emprego</nz-form-label>
+            <nz-form-label>Situação de emprego</nz-form-label>
             <nz-form-control [nzValidateStatus]="validateForm.controls['situacao']"
-            nzErrorTip="Seleciona uma situação de emprego!" [nzSpan]="24">
+            nzErrorTip="Seleciona uma situação de emprego!">
                 <nz-radio-group formControlName="situacao" class="label_radio flex ">
                     <label class="margin-8r-12b" nz-radio-button nzValue="A">Sem emprego e estou ativamente à
                         procura</label>
@@ -64,42 +59,118 @@
                 </nz-radio-group>
             </nz-form-control>
         </nz-form-item>
+    </div>
 
 
-        <!-- local de residencia -->
-        <nz-form-item>
-            <nz-form-label [nzSpan]="5">Local de residencia</nz-form-label>
-            <nz-form-control [nzValidateStatus]="validateForm.controls['local']"
-            nzErrorTip="Seleciona a tua zona de residencia!" [nzSpan]="24">
-                <nz-input-group class="margin-8r-12b" [nzSuffix]="locationIconTemplate">
-                    <input name="local" placeholder="Localização" nz-input [(ngModel)]="inputValue"
+        <div class="flex flex-wrap">
+            <nz-divider nzOrientation="left" nzText="Local de residencia"></nz-divider>
+        <!-- Morada -->
+        <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="16" [nzXl]="16" [nzXXl]="16">
+            <nz-form-label>Morada</nz-form-label>
+            <nz-form-control [nzValidateStatus]="validateForm.controls['morada']"
+            nzErrorTip="Seleciona a tua zona de residencia!">
+                <nz-input-group class="margin-8r-12b">
+                    <input nz-input placeholder="Rua exemplo nº123"/>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <!-- Código postal -->
+        <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="8" [nzXl]="8" [nzXXl]="8">
+            <nz-form-label>Codigo postal</nz-form-label>
+            <nz-form-control [nzValidateStatus]="validateForm.controls['codigoPostal']"
+            nzErrorTip="Seleciona o teu código de postal!">
+                <nz-input-group class="margin-8r-12b">
+                    <input nz-col [nzXs]="14" [nzMd]="14" [nzLg]="14" [nzXl]="14" [nzXXl]="14" maxlength="4" #myInput nz-input (input)="onlyNumbers(myInput)" placeholder="3000"/>
+                    <input nz-col [nzXs]="10" [nzMd]="10" [nzLg]="10" [nzXl]="10" [nzXXl]="10" maxlength="3" #myInput nz-input (input)="onlyNumbers(myInput)" placeholder="123"/>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <!-- Concelho -->
+        <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="8" [nzXl]="8" [nzXXl]="8">
+            <nz-form-label>Concelho</nz-form-label>
+            <nz-form-control [nzValidateStatus]="validateForm.controls['concelho']"
+            nzErrorTip="Seleciona o teu concelho!">
+                <nz-input-group  class="margin-8r-12b">
+                    <input nz-input placeholder="Conselho"/>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <!-- localidade -->
+        <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="8" [nzXl]="8" [nzXXl]="8">
+            <nz-form-label>Localidade</nz-form-label>
+            <nz-form-control [nzValidateStatus]="validateForm.controls['localidade']"
+            nzErrorTip="Seleciona a tua localidade!">
+                <nz-input-group class="margin-8r-12b">
+                    <input nz-input placeholder="localidade"/>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <!-- Distrito -->
+        <nz-form-item nz-row [nzGutter]="16" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="8" [nzXl]="8" [nzXXl]="8">
+            <nz-form-label>Distrito</nz-form-label>
+            <nz-form-control [nzValidateStatus]="validateForm.controls['distrito']"
+            nzErrorTip="Seleciona a tua zona de residencia!">
+                <nz-input-group class="margin-8r-12b local-input" [nzSuffix]="locationIconTemplate">
+                    <input class="local-input-shd-none" name="local" placeholder="Distrito" nz-input [(ngModel)]="inputValue"
                         (input)="onInput($event)" [nzAutocomplete]="auto" />
                     <nz-autocomplete [nzDataSource]="locais" nzBackfill #auto></nz-autocomplete>
-
                 </nz-input-group>
             </nz-form-control>
             <ng-template #locationIconTemplate><fa-icon [icon]="faLocationDot"></fa-icon></ng-template>
         </nz-form-item>
 
 
-        <!-- Curriculo Upload file -->
-        <nz-form-item>
-            <nz-form-label [nzSpan]="5">Curriculo</nz-form-label>
-            <nz-form-control [nzValidateStatus]="validateForm.controls['local']"
-            nzErrorTip="Faz upload do teu curriculo! (max 5MB)" [nzSpan]="24">
-                <nz-input-group>
-                <nz-upload nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" [nzFileList]="fileList"
-                    (nzChange)="handleChange($event)">
-                    <button nz-button>
-                        <span nz-icon nzType="upload"></span>
-                        Upload
-                    </button>
-                </nz-upload>
+    </div>
+        <nz-divider nzOrientation="left" nzText="Formação"></nz-divider>
 
+
+        <div class="flex flex-wrap">
+
+        <!-- escolaridade -->
+        <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" [nzXXl]="12">
+            <nz-form-label>Escolaridade</nz-form-label>
+            <nz-form-control [nzValidateStatus]="validateForm.controls['escolaridade']"
+            nzErrorTip="Seleciona a tua escolaridade!">
+                <nz-input-group class="margin-8r-12b">
+                    <input nz-input placeholder="12º ano/ licenciado etc."/>
                 </nz-input-group>
             </nz-form-control>
-            <ng-template #locationIconTemplate><fa-icon [icon]="faLocationDot"></fa-icon></ng-template>
         </nz-form-item>
+
+        <!-- Area de formação -->
+        <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" [nzXXl]="12">
+            <nz-form-label>Area de formação</nz-form-label>
+            <nz-form-control [nzValidateStatus]="validateForm.controls['formacao']"
+            nzErrorTip="Seleciona a tua area de formação!">
+                <nz-input-group class="margin-8r-12b">
+                    <input nz-input placeholder="Desinger gráfico/ engenheiro informático etc."/>
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+    </div>
+
+    <!-- Curriculo Upload file -->
+    <nz-form-item>
+        <nz-form-label [nzSpan]="5">Curriculo</nz-form-label>
+        <nz-form-control [nzValidateStatus]="validateForm.controls['curriculo']"
+        nzErrorTip="Faz upload do teu curriculo! (max 5MB)" [nzSpan]="24">
+            <nz-input-group>
+            <nz-upload nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" [nzFileList]="fileList"
+                (nzChange)="handleChange($event)">
+                <button nz-button>
+                    <span nz-icon nzType="upload"></span>
+                    Upload
+                </button>
+            </nz-upload>
+
+            </nz-input-group>
+        </nz-form-control>
+        <ng-template #locationIconTemplate><fa-icon [icon]="faLocationDot"></fa-icon></ng-template>
+    </nz-form-item>
 
         <!-- Submit button -->
         <nz-form-item nz-row>
@@ -109,7 +180,7 @@
           </nz-form-item>
     </form>
 </div>
-<div nz-col [nzSpan]="12">
+<div nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12" [nzXXl]="12">
         <img class="img_home" src="../../assets/contract-01.png"
           alt="Ilustração de pessoas a olhar em volta com binoculus etc">
 </div>

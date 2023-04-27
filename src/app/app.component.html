@@ -1,7 +1,7 @@
 <nz-layout>
   
-  <nz-header class="grey-bkg nav-border jst-spc-between">
-    <div class="wrapper flex jst-spc-between">
+  <nz-header class="grey-bkg padding-header nav-border jst-spc-between">
+    <div class="wrapper flex colum jst-spc-between">
       <div class="logo"><a onclick="window.location= ''"><img src="../assets/alpicarrers_logo_small.png"
             alt="alpiCarrers logo"></a></div>
       <div>
@@ -34,7 +34,7 @@
           <nz-form-item>
             <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="email">E-mail</nz-form-label>
             <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="The input is not valid E-mail!">
-              <input requeired placeholder="exemplo@gmail.com" nz-input formControlName="email" id="email" />
+              <input class="newsletter-input" requeired placeholder="exemplo@gmail.com" nz-input formControlName="email" id="email" />
             </nz-form-control>
           </nz-form-item>
 
