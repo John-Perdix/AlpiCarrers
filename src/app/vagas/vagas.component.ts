@@ -14,6 +14,9 @@ import { NzButtonSize } from 'ng-zorro-antd/button';
 /* Marks for slider module de ng-zorro */
 import { NzMarks } from 'ng-zorro-antd/slider';
 
+/* searchPipes  */
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @Component({
   selector: 'app-vagas',
   templateUrl: './vagas.component.html',

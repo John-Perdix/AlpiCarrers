@@ -33,6 +33,7 @@ export interface Emprego {
   providedIn: 'root'
 })
 export class EmpregosService {
+  [x: string]: any;
   /* Gerar empregos aleatórios */
   listOfData: Emprego[] = [];
   firstThreeEmpregos: Emprego[] = [];
@@ -110,73 +111,6 @@ value_min = 800;
     this.firstThreeEmpregos = this.listOfData.slice(0, 3);
   }
 
-  /* getRandomSkills() {
-    const numSkills = Math.floor(Math.random() * 5) + 5; // generates a random number between 5 and 10
-    const skills_random = [];
-    for (let i = 1; i <= numSkills; i++) {
-      const skillIndex = Math.floor(Math.random() * this.skills.length);
-      skills_random[i] = this.skills[skillIndex];
-    }
-    return this.skills;
-  } */
-
-  /* getRandomSkills() {
-    const numSkills = Math.floor(Math.random() * 5) + 5; // generates a random number between 5 and 10
-    const skills_random: {1?: string, 2?: string, 3?: string, 4?: string, 5?: string, 6?: string, 7?: string, 8?: string, 9?: string, 10?: string} = {};
-    for (let i = 1; i <= numSkills; i++) {
-      const skillIndex = Math.floor(Math.random() * this.skills.length);
-      this.skills_random[i] = this.skills[skillIndex];
-    }
-    return skills_random;
-  } */
-
-  /* getRandomSkills() {
-    const numSkills = Math.floor(Math.random() * 5) + 5; // generates a random number between 5 and 10
-    const skills_random: {1: string, 2: string, 3: string, 4: string, 5: string, 6: string, 7: string, 8: string, 9: string, 10: string} = {
-      1: '',
-      2: '',
-      3: '',
-      4: '',
-      5: '',
-      6: '',
-      7: '',
-      8: '',
-      9: '',
-      10: '',
-    };
-    for (let i = 1; i <= numSkills; i++) {
-      const skillIndex = Math.floor(Math.random() * this.skills.length);
-      this.skills_random[i] = this.skills[skillIndex];
-    }
-    return skills_random;
-  } */
-
-
- /*  getRandomSkills() {
-    const numSkills = Math.floor(Math.random() * 5) + 5; // generates a random number between 5 and 10
-    type SkillsRandom = {
-      [key: number]: string;
-    }
-    
-    const skills_random: SkillsRandom = {
-      1: '',
-      2: '',
-      3: '',
-      4: '',
-      5: '',
-      6: '',
-      7: '',
-      8: '',
-      9: '',
-      10: '',
-    };
-    for (let i = 1; i <= numSkills; i++) {
-      const skillIndex = Math.floor(Math.random() * this.skills.length);
-      skills_random[i] = this.skills[skillIndex];
-    }
-    return skills_random;
-  } */
-
   getRandomSkills(): { [key: number]: string } {
     const numSkills = Math.floor(Math.random() * 5) + 5; // generates a random number between 5 and 10
     const skills_random: { [key: number]: string } = {};
@@ -191,50 +125,6 @@ value_min = 800;
   /* -------------------------------------------------- */
 
   constructor() {this.generateRandomEmpregos(); }
-
-  
-  
-  
-  
-
-  /* listOfData: Emprego[] = [
-    {
-      posicao: 'Product designer',
-      empresa: 'Revolut',
-      area: 'UX-UI',
-      politica: 'Hibrido',
-      local: 'Coimbra',
-      imagem: '../../assets/empresas/revolut.png',
-      salario : '900€ - 1200€',
-      descricao: 'Prototipagem para as plataformas web e mobile da revolut',
-      experiencia : '2 anos experiencia- junior',
-      skills: {1:'UX-UI', 2:'Ilustracao', 3:'Figma', 4:'Adobe suit', 5:'',  6:'',  7:'',  8:'',  9:'',  10:''}
-    },
-    {
-      posicao: 'Web dev',
-      empresa: 'Div.pt',
-      area: 'IT',
-      politica: 'Hibrido',
-      local: 'Coimbra',
-      imagem: '../../assets/empresas/divpt.png',
-      salario : '900€ - 1200€',
-      descricao: 'Prototipagem para as plataformas web e mobile da revolut',
-      experiencia : '3 anos experiencia- junior',
-      skills: {1:'UX-UI', 2:'html', 3:'css', 4:'javascript', 5:'typescript',  6:'Adobe suit',  7:'Figma',  8:'Visual Studio',  9:'',  10:''}
-    },
-    {
-      posicao: 'Animador 3D',
-      empresa: 'Intel',
-      area: 'Animação',
-      politica: 'Remoto',
-      local: 'Coimbra',
-      imagem: '../../assets/empresas/intel_logo.png',
-      salario : '1800€ - 2200€',
-      descricao: 'Desenvolvimento de animações para o interface das apps. Deve estar completamente à vontade com conceitos como modelação, animacão, materiais e shading.',
-      experiencia : '10 anos experiencia- senior',
-      skills: {1:'UX-UI', 2:'Ilustracao', 3:'Figma', 4:'Adobe suit', 5:'Blender',  6:'Octane',  7:'Redshift',  8:'Cinema-4D',  9:'',  10:''}
-    }
-  ]; */
 
   getEmprego(): Emprego[] {
     return this.listOfData;

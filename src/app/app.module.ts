@@ -43,6 +43,8 @@ import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzResultModule } from 'ng-zorro-antd/result';
 
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 
 /* serachpipe Module */
@@ -91,7 +93,8 @@ registerLocaleData(pt);
     NzUploadModule,
     NzResultModule,
 
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    RouterModule.forChild([{ path: '', component: VagasComponent }]),
     
   ],
   providers: [

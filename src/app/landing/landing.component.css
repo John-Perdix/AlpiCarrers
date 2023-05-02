@@ -1,3 +1,7 @@
-
+/* Table */
+.ant-table{
+    background: none;
+    overflow-x:auto;
+  }
 
 

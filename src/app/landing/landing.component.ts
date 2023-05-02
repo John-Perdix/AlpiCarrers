@@ -23,6 +23,8 @@ export class LandingComponent implements OnInit {
    
 
 
+  pageSize = 3;
+  currentPage = 1;
 
   navigateToCandidatura(data: any) {
     this.router.navigate(['/candidatura'], { state: { data: data } });

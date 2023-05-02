@@ -40,7 +40,7 @@
 
       <ng-template #searchIconTemplate><span nz-icon nzType="search" nzTheme="outline"></span></ng-template>
 
-      <nz-table [nzShowPagination]=" 'false'" #basicTable [nzData]="firstThreeEmpregos">
+      <nz-table [nzShowPagination]=" 'false'" #basicTable [nzData]="listOfData">
         <thead>
           <tr>
             <th>Posição</th>
@@ -51,7 +51,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of basicTable.data | filter:searchEmprego">
+          <tr *ngFor="let data of basicTable.data.slice((currentPage - 1) * pageSize, currentPage * pageSize) | filter:searchEmprego">
             <td>{{ data.posicao }}</td>
             <td>{{ data.empresa }}</td>
             <td>{{ data.area }}</td>

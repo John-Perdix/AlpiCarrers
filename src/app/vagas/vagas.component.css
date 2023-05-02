@@ -24,4 +24,8 @@
     background-color: #E4997F;
   }
 
-  
+  /* Table */
+.ant-table{
+  background: none;
+  overflow-x: none;
+}

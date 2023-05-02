@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { EmpregosService } from './empregos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -21,5 +23,11 @@ export class AppComponent {
     console.log('submit', this.validateForm.value);
   }
 
-  constructor(private fb: UntypedFormBuilder) {}
+  constructor(private fb: UntypedFormBuilder, private router: Router, private empregosService: EmpregosService ) {}
+
+  searchEmprego2!: string;
+  searchEmpregos() {
+    this.empregosService['setSearchTerm'](this.searchEmprego2);
+    this.router.navigate(['/vagas']);
+  }
 }

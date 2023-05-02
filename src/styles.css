@@ -264,12 +264,6 @@ box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
   color: #fff;
 }
 
-/* Table */
-.ant-table{
-  background: none;
-  overflow-x:auto;
-}
-
 .ant-table-thead>tr>th{
   background: none;
   border-bottom: solid 2px#D85F35;
