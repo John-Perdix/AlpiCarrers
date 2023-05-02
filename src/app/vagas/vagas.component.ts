@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 /* Serviço */
 import { EmpregosService } from '../empregos.service';
@@ -41,7 +42,7 @@ export class VagasComponent implements OnInit {
 
   listOfData: Emprego[] = [];
 
-  constructor(private empregosService: EmpregosService) { }
+  constructor(private empregosService: EmpregosService, private router: Router) { }
 
   /* FontAwesome Icons */
   faMoneyBillWave = faMoneyBillWave;
@@ -241,6 +242,10 @@ checkOptionsLocal = [
     }
   }
   
+  /* Função para passar a data para a candidatura */
+  navigateToCandidatura(data: any) {
+    this.router.navigate(['/candidatura'], { state: { data: data } });
+  }
 
 
   /* data filtering tags */
@@ -253,7 +258,7 @@ checkOptionsLocal = [
   /* handleClose(removedTag: {}): void {
     this.tags = this.tags.filter(tag => tag !== removedTag);
   } */
-  handleClose(removedTag: string): void {
+  handleClose(removedTag: any): void {
     this.tags = this.tags.filter(tag => tag !== removedTag);
     this.filterData();
   }
@@ -301,6 +306,11 @@ checkOptionsLocal = [
           this.tags.push(value);
         }
       });
+    } else {
+      const lastIndex = this.tags.length - 1;
+      if (lastIndex >= 0) {
+        this.tags.splice(lastIndex, 1); // remove the last tag from the tags array
+      }
     }
 
     /* Checked 2 */
@@ -314,16 +324,6 @@ checkOptionsLocal = [
   }
 
 /* Checked 3 */
-if (checkedCount2 > 0) {
-  const checkedValuesTwo = this.checkOptionsTwo.filter(item => item.checked).map(item => item.label);
-checkedValuesTwo.forEach(value => {
-  if (!this.tags.includes(value)) {
-    this.tags.push(value);
+
   }
-});
-}
-  }
-  
-  
-  
 }

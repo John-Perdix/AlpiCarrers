@@ -15,3 +15,13 @@
     padding-top: 0;
   }
   
+  .sider .ant-input-affix-wrapper>input.ant-input{
+    background-color: #fff;
+    color: #000;
+  }
+
+  .ant-slider-track {
+    background-color: #E4997F;
+  }
+
+  

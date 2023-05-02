@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { FormGroup, UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, ValidationErrors, Validators, AbstractControl } from '@angular/forms';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer } from 'rxjs'
@@ -24,10 +24,10 @@ export class CandidaturaComponent implements OnInit {
   ngOnInit(): void {
     this.getEmprego();
     this.empregosService.generateRandomEmpregos();
-    this.data = history.state.data;
+    this.data_vaga = history.state.data;
   }
 
-  data: any;
+  data_vaga: any;
 
 
   validateForm: UntypedFormGroup;
@@ -43,6 +43,7 @@ export class CandidaturaComponent implements OnInit {
   getEmprego(): void {
     this.listOfData = this.empregosService.getEmprego();
   }
+
   listOfData: Emprego[] = [];
 
   resetForm(e: MouseEvent): void {
@@ -58,6 +59,7 @@ export class CandidaturaComponent implements OnInit {
   
   locais = this.empregosService.locais;
   inputValue = '';
+  
 
   /* Autocomplete de locais */
   onInput(event: Event): void {
@@ -66,11 +68,14 @@ export class CandidaturaComponent implements OnInit {
   }
 
   showSuccess = false;
+  showError = false;
+  showForm = true;
   formSubmitted = false;
   submitForm(): void {
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
       // Set flag to show success message
+      this.showForm = false; //hide form
       this.showSuccess = true;
       // Reset form
       this.validateForm.reset();
@@ -82,6 +87,7 @@ export class CandidaturaComponent implements OnInit {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
+          console.log('Form not submitted - ERROR');
         }
       });
     }
@@ -103,7 +109,8 @@ export class CandidaturaComponent implements OnInit {
       distrito:[null, [Validators.required]],
       escolaridade:[null, [Validators.required]],
       formacao:[null, [Validators.required]],
-      curriculo:[null, [Validators.required]],
+      curriculo:[null, [this.fileValidator]],
+      emprego: [null, [Validators.required]]
     });
     
   }
@@ -111,9 +118,15 @@ export class CandidaturaComponent implements OnInit {
 
   /* UPLOAD FILE */
 
-  fileList: NzUploadFile[] = [
+  fileValidator(control: AbstractControl): ValidationErrors | null {
+    const file = control.value;
+    if (!file || !(file instanceof File)) {
+      return { invalidFile: true };
+    }
+    return null;
+  }
 
-  ];
+  fileList: NzUploadFile[] = [];
 
   handleChange(info: NzUploadChangeParam): void {
     let fileList = [...info.fileList];

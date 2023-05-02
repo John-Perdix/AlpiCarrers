@@ -1,7 +1,7 @@
 <div class="wrapper">
 
   <!-- Hero section -->
-  <section class="home">
+  <section class="home align-end">
     <div class="child-1" nz-col [nzSpan]="24" [nzXs]="24" [nzMd]="12" [nzLg]="12">
       <div>
         <h1>Queres encontrar a carreira profissional perfeita para ti?</h1>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="child-2" nz-col [nzPull]="5" nzSpan="19">
+    <div class="child-2" nz-col nz-col [nzSpan]="24" [nzXs]="24" [nzMd]="12" [nzLg]="12">
       <img class="img_home" src="../../assets/people_looking-01.png"
         alt="Ilustração de pessoas a olhar em volta com binoculus etc">
     </div>
@@ -143,7 +143,7 @@
       <nz-card class="grey-bkg padding flex colum margin-top-bottom round_border" *ngFor="let data of basiccard.data">
         <div class="align-center flex colum margin-8r-12b">
           <div class="margin-8r-12b">
-            <img class="img_home" src="{{ data.imagem }}" alt="Logoimagem da div.pt">
+            <img class="img_home" src="{{ data.imagem }}" alt="Logoimagem de {{data.empresa}}">
           </div>
 
           <div class="align-center margin-8r-12b">

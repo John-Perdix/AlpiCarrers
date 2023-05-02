@@ -8,20 +8,37 @@
     </nz-breadcrumb>
 
     <h1>Candidatura</h1>
-    <h2>{{data.posicao}} na {{data.empresa}}</h2>
+
+    <h2 *ngIf="data_vaga">{{data_vaga.posicao}} na {{data_vaga.empresa}}</h2>
     </section>
 
     <section class="flex">
-        <div nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12" [nzXXl]="12">
+        <div *ngIf="showForm" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12" [nzXXl]="12">
     <!-- FORM -->
 
-    <form *ngIf="!formSubmitted" nzLayout="vertical" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <form  *ngIf="!formSubmitted && showForm" nzLayout="vertical" nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
         <div>
+
+            <!-- Se entrou em candidatura sem escolher uma vaga -->
+            <nz-form-item *ngIf="!data_vaga" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24" [nzXXl]="24">
+                <nz-divider nzOrientation="left" nzText="Vaga a candidatar"></nz-divider>
+                <nz-form-label>Vaga</nz-form-label>
+                <nz-form-control [nzValidateStatus]="validateForm.controls['emprego']"
+                nzErrorTip="Seleciona a tua zona de residencia!">
+                <nz-input-group class="margin-8r-12b">
+                    <nz-select formControlName="emprego">
+                        <nz-option *ngFor="let data of listOfData" [nzValue]="data.id" [nzLabel]="data.posicao + ' - ' + data.empresa"></nz-option>
+                    </nz-select>
+                </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+
+
             <nz-divider nzOrientation="left" nzText="Dados pessoais"></nz-divider>
         <!-- Nome -->
         <nz-form-item  nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24" [nzXXl]="24">
             <nz-form-label>Nome</nz-form-label>
-            <nz-form-control nzHasFeedback [nzSpan]="24" nzErrorTip="Coloca um nome com pelo menos 6 carateres">
+            <nz-form-control nzHasFeedback nzErrorTip="Coloca um nome com pelo menos 6 carateres">
                 <input nz-input formControlName="nome" placeholder="Nome completo" name="minlength" minlength="6" />
             </nz-form-control>
         </nz-form-item>
@@ -29,7 +46,7 @@
         <!-- Email -->
         <nz-form-item  nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24" [nzXXl]="24">
             <nz-form-label>Email</nz-form-label>
-            <nz-form-control>
+            <nz-form-control nzHasFeedback>
                 <input nz-input formControlName="email" placeholder="exemplo@exemplo.com" type="email" />
             </nz-form-control>
         </nz-form-item>
@@ -37,7 +54,7 @@
         <!-- Telemovel -->
         <nz-form-item  nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24" [nzXXl]="24">
             <nz-form-label nzFor="phoneNumber">Numero de telemóvel</nz-form-label>
-            <nz-form-control [nzValidateStatus]="validateForm.controls['tlm']"
+            <nz-form-control class="local-input-shd-none" zHasFeedback [nzValidateStatus]="validateForm.controls['tlm']"
                 nzErrorTip="Coloca o teu numero de telefone">
                 <nz-input-group>
                     <input #tlm (input)="onlyNumbers(tlm)" placeholder="91*******" formControlName="tlm" id="'tlm'" nz-input />
@@ -48,7 +65,7 @@
         <!-- Situçao de emprego -->
         <nz-form-item>
             <nz-form-label>Situação de emprego</nz-form-label>
-            <nz-form-control [nzValidateStatus]="validateForm.controls['situacao']"
+            <nz-form-control nzHasFeedback [nzValidateStatus]="validateForm.controls['situacao']"
             nzErrorTip="Seleciona uma situação de emprego!">
                 <nz-radio-group formControlName="situacao" class="label_radio flex ">
                     <label class="margin-8r-12b" nz-radio-button nzValue="A">Sem emprego e estou ativamente à
@@ -68,9 +85,9 @@
         <!-- Morada -->
         <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="16" [nzXl]="16" [nzXXl]="16">
             <nz-form-label>Morada</nz-form-label>
-            <nz-form-control [nzValidateStatus]="validateForm.controls['morada']"
+            <nz-form-control nzHasFeedback [nzValidateStatus]="validateForm.controls['morada']"
             nzErrorTip="Seleciona a tua zona de residencia!">
-                <nz-input-group class="margin-8r-12b">
+                <nz-input-group class="margin-8r-12b local-input">
                     <input formControlName="morada" nz-input placeholder="Rua exemplo nº123"/>
                 </nz-input-group>
             </nz-form-control>
@@ -79,9 +96,9 @@
         <!-- Código postal -->
         <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="8" [nzXl]="8" [nzXXl]="8">
             <nz-form-label>Codigo postal</nz-form-label>
-            <nz-form-control [nzValidateStatus]="validateForm.controls['codigoPostal']"
+            <nz-form-control nzHasFeedback [nzValidateStatus]="validateForm.controls['codigoPostal']"
             nzErrorTip="Seleciona o teu código de postal!">
-                <nz-input-group class="margin-8r-12b">
+                <nz-input-group class="margin-8r-12b local-input">
                     <input formControlName="codigoPostal1" nz-col [nzXs]="14" [nzMd]="14" [nzLg]="14" [nzXl]="14" [nzXXl]="14" maxlength="4" #myInput nz-input (input)="onlyNumbers(myInput)" placeholder="3000"/>
                     <input formControlName="codigoPostal2" nz-col [nzXs]="10" [nzMd]="10" [nzLg]="10" [nzXl]="10" [nzXXl]="10" maxlength="3" #myInput nz-input (input)="onlyNumbers(myInput)" placeholder="123"/>
                 </nz-input-group>
@@ -91,9 +108,9 @@
         <!-- Concelho -->
         <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="8" [nzXl]="8" [nzXXl]="8">
             <nz-form-label>Concelho</nz-form-label>
-            <nz-form-control [nzValidateStatus]="validateForm.controls['concelho']"
+            <nz-form-control nzHasFeedback [nzValidateStatus]="validateForm.controls['concelho']"
             nzErrorTip="Seleciona o teu concelho!">
-                <nz-input-group  class="margin-8r-12b">
+                <nz-input-group  class="margin-8r-12b local-input">
                     <input formControlName="concelho" nz-input placeholder="Conselho"/>
                 </nz-input-group>
             </nz-form-control>
@@ -102,9 +119,9 @@
         <!-- localidade -->
         <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="8" [nzXl]="8" [nzXXl]="8">
             <nz-form-label>Localidade</nz-form-label>
-            <nz-form-control [nzValidateStatus]="validateForm.controls['localidade']"
+            <nz-form-control nzHasFeedback [nzValidateStatus]="validateForm.controls['localidade']"
             nzErrorTip="Seleciona a tua localidade!">
-                <nz-input-group class="margin-8r-12b">
+                <nz-input-group class="margin-8r-12b local-input">
                     <input formControlName="localidade" nz-input placeholder="localidade"/>
                 </nz-input-group>
             </nz-form-control>
@@ -113,10 +130,10 @@
         <!-- Distrito -->
         <nz-form-item nz-row [nzGutter]="16" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="8" [nzXl]="8" [nzXXl]="8">
             <nz-form-label>Distrito</nz-form-label>
-            <nz-form-control [nzValidateStatus]="validateForm.controls['distrito']"
+            <nz-form-control nzHasFeedback [nzValidateStatus]="validateForm.controls['distrito']"
             nzErrorTip="Seleciona a tua zona de residencia!">
                 <nz-input-group class="margin-8r-12b local-input" [nzSuffix]="locationIconTemplate">
-                    <input formControlName="distrito" class="local-input-shd-none" name="local" placeholder="Distrito" nz-input [(ngModel)]="inputValue"
+                    <input formControlName="distrito" class="local-input-shd-none" name="local" placeholder="Distrito" nz-input
                         (input)="onInput($event)" [nzAutocomplete]="auto" />
                     <nz-autocomplete [nzDataSource]="locais" nzBackfill #auto></nz-autocomplete>
                 </nz-input-group>
@@ -134,9 +151,9 @@
         <!-- escolaridade -->
         <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" [nzXXl]="12">
             <nz-form-label>Escolaridade</nz-form-label>
-            <nz-form-control [nzValidateStatus]="validateForm.controls['escolaridade']"
+            <nz-form-control nzHasFeedback [nzValidateStatus]="validateForm.controls['escolaridade']"
             nzErrorTip="Seleciona a tua escolaridade!">
-                <nz-input-group class="margin-8r-12b">
+                <nz-input-group class="margin-8r-12b local-input">
                     <input formControlName="escolaridade" nz-input placeholder="12º ano/ licenciado etc."/>
                 </nz-input-group>
             </nz-form-control>
@@ -145,14 +162,22 @@
         <!-- Area de formação -->
         <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" [nzXXl]="12">
             <nz-form-label>Area de formação</nz-form-label>
-            <nz-form-control [nzValidateStatus]="validateForm.controls['formacao']"
+            <nz-form-control nzHasFeedback [nzValidateStatus]="validateForm.controls['formacao']"
             nzErrorTip="Seleciona a tua area de formação!">
-                <nz-input-group class="margin-8r-12b">
+                <nz-input-group class="margin-8r-12b local-input">
                     <input formControlName="formacao" nz-input placeholder="Desinger gráfico/ engenheiro informático etc."/>
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
-    </div>
+
+
+    <!-- id da vaga (hidden) -->
+    <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" [nzXXl]="12">
+            <nz-input-group class="margin-8r-12b">
+                <input *ngIf="data_vaga" hidden formControlName="emprego" nz-input ngModel="{{data_vaga.id}}"/>
+            </nz-input-group>
+    </nz-form-item>
+</div>
 
     <!-- Curriculo Upload file -->
     <nz-form-item>
@@ -160,17 +185,15 @@
         <nz-form-control [nzValidateStatus]="validateForm.controls['curriculo']"
         nzErrorTip="Faz upload do teu curriculo! (max 5MB)" [nzSpan]="24">
             <nz-input-group>
-            <nz-upload formControlName="curriculo" nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" [nzFileList]="fileList"
+            <nz-upload ngDefaultControl formControlName="curriculo" nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" [nzFileList]="fileList"
                 (nzChange)="handleChange($event)">
                 <button nz-button>
                     <span nz-icon nzType="upload"></span>
                     Upload
                 </button>
             </nz-upload>
-
             </nz-input-group>
         </nz-form-control>
-        <ng-template #locationIconTemplate><fa-icon [icon]="faLocationDot"></fa-icon></ng-template>
     </nz-form-item>
 
         <!-- Submit button -->
@@ -181,12 +204,17 @@
           </nz-form-item>
     </form>
 </div>
-<div nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12" [nzXXl]="12">
+<div *ngIf="showForm" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="12" [nzXXl]="12">
         <img class="img_home" src="../../assets/contract-01.png"
           alt="Ilustração de pessoas a olhar em volta com binoculus etc">
 </div>
 
-<div><nz-result *ngIf="showSuccess" nzStatus="success" nzTitle="Form submitted successfully!"></nz-result></div>
+<div><nz-result *ngIf="showSuccess" nzStatus="success" nzTitle="Candidatura submetida com sucesso!">
+    <div nz-result-extra>
+        <button nz-button nzType="primary">Página inicial</button>
+      </div>
+</nz-result></div>
+
 </section>
 
 </div>
