@@ -54,10 +54,10 @@
         <!-- Telemovel -->
         <nz-form-item  nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24" [nzXXl]="24">
             <nz-form-label nzFor="phoneNumber">Numero de telemóvel</nz-form-label>
-            <nz-form-control class="local-input-shd-none" zHasFeedback [nzValidateStatus]="validateForm.controls['tlm']"
+            <nz-form-control class="local-input-shd-none" nzHasFeedback [nzValidateStatus]="validateForm.controls['tlm']"
                 nzErrorTip="Coloca o teu numero de telefone">
-                <nz-input-group>
-                    <input #tlm (input)="onlyNumbers(tlm)" placeholder="91*******" formControlName="tlm" id="'tlm'" nz-input />
+                <nz-input-group class="local-input">
+                    <input class="local-input" #tlm (input)="onlyNumbers(tlm)" placeholder="91*******" formControlName="tlm" id="'tlm'" nz-input />
                 </nz-input-group>
             </nz-form-control>
         </nz-form-item>
@@ -174,7 +174,7 @@
     <!-- id da vaga (hidden) -->
     <nz-form-item nz-row [nzGutter]="16" class="margin-8r-12b" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="12" [nzXl]="12" [nzXXl]="12">
             <nz-input-group class="margin-8r-12b">
-                <input *ngIf="data_vaga" hidden formControlName="emprego" nz-input ngModel="{{data_vaga.id}}"/>
+                <input *ngIf="data_vaga" hidden [(ngModel)]="data_vaga.id" formControlName="emprego" nz-input/>
             </nz-input-group>
     </nz-form-item>
 </div>
@@ -185,7 +185,7 @@
         <nz-form-control [nzValidateStatus]="validateForm.controls['curriculo']"
         nzErrorTip="Faz upload do teu curriculo! (max 5MB)" [nzSpan]="24">
             <nz-input-group>
-            <nz-upload ngDefaultControl formControlName="curriculo" nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" [nzFileList]="fileList"
+            <nz-upload ngDefaultControl formControlName="curriculo" nzAction="http://localhost/uploads" [nzFileList]="fileList"
                 (nzChange)="handleChange($event)">
                 <button nz-button>
                     <span nz-icon nzType="upload"></span>

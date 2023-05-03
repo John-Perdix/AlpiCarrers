@@ -33,118 +33,193 @@
   <div class="flex home">
 
     <!-- Sider -->
-    <section nz-col [nzXs]="24" [nzMd]="6" [nzLg]="6" [nzXl]="6" [nzXXl]="6" class="sider round_border mg-0 padding-top">
+    <section nz-col [nzXs]="24" [nzMd]="6" [nzLg]="6" [nzXl]="6" [nzXXl]="6"
+      class="sider round_border mg-0 pd-top-0 hidden-768">
 
       <!-- Colapse 1- Política -->
-      <nz-collapse>
-      <nz-collapse-panel [nzHeader]="panel3">
-        <ng-template #panel3>Filtros de pesquisa</ng-template>
-      <nz-collapse>
-        <nz-collapse-panel [nzActive]="true" [nzHeader]="panel1">
-          <label nz-typography nzType="secondary" for="politica">Escolhe uma politica de trabalho</label>
-          <nz-checkbox-group name="politica" [(ngModel)]="checkOptionsOne"
-            (ngModelChange)="updateSingleChecked(); filterData()"></nz-checkbox-group>
-        </nz-collapse-panel>
-      </nz-collapse>
-      <ng-template #panel1>Política</ng-template>
+          <nz-collapse>
+            <nz-collapse-panel [nzActive]="true" [nzHeader]="panel1">
+              <label nz-typography nzType="secondary" for="politica">Escolhe uma politica de trabalho</label>
+              <nz-checkbox-group name="politica" [(ngModel)]="checkOptionsOne"
+                (ngModelChange)="updateSingleChecked(); filterData()"></nz-checkbox-group>
+            </nz-collapse-panel>
+          </nz-collapse>
+          <ng-template #panel1><fa-icon [icon]="faHouseLaptop"></fa-icon> &nbsp; Política</ng-template>
 
-      <!-- Colapse 2- Area -->
-      <nz-collapse>
-        <nz-collapse-panel [nzActive]="true" [nzHeader]="panel2">
-          <label nz-typography nzType="secondary" for="area">Escolhe uma area de interesse</label>
-          <nz-checkbox-group name="area" [(ngModel)]="checkOptionsTwo"
-            (ngModelChange)="updateSingleChecked(); filterData2()"></nz-checkbox-group>
-        </nz-collapse-panel>
-      </nz-collapse>
-      <ng-template #panel2>Area</ng-template>
+          <!-- Colapse 2- Area -->
+          <nz-collapse>
+            <nz-collapse-panel [nzActive]="true" [nzHeader]="panel2">
+              <label nz-typography nzType="secondary" for="area">Escolhe uma area de interesse</label>
+              <nz-checkbox-group name="area" [(ngModel)]="checkOptionsTwo"
+                (ngModelChange)="updateSingleChecked(); filterData2()"></nz-checkbox-group>
+            </nz-collapse-panel>
+          </nz-collapse>
+          <ng-template #panel2><fa-icon [icon]="faBriefcase"></fa-icon> &nbsp; Area</ng-template>
 
-      <!-- Colapse 3- Localização -->
-      <nz-collapse>
-        <nz-collapse-panel [nzActive]="true" [nzHeader]="panel3">
-          <label nz-typography nzType="secondary" for="local">Escolhe uma localização</label>
+          <!-- Colapse 3- Localização -->
+          <nz-collapse>
+            <nz-collapse-panel [nzActive]="true" [nzHeader]="panel3">
+              <label nz-typography nzType="secondary" for="local">Escolhe uma localização</label>
 
-          <nz-input-group class="margin-8r-12b local-input" [nzSuffix]="searchIconTemplate">
-            <input class="local-input-shd-none" name="local" placeholder="Localização" nz-input [(ngModel)]="inputValue" (input)="onInput($event)"
-              [nzAutocomplete]="auto" />
-            <nz-autocomplete [nzDataSource]="locais" nzBackfill #auto></nz-autocomplete>
+              <nz-input-group class="margin-8r-12b local-input" [nzSuffix]="searchIconTemplate">
+                <input class="local-input-shd-none" name="local" placeholder="Localização" nz-input
+                  [(ngModel)]="inputValue" (input)="onInput($event)" [nzAutocomplete]="auto" />
+                <nz-autocomplete [nzDataSource]="locais" nzBackfill #auto></nz-autocomplete>
 
-          </nz-input-group>
+              </nz-input-group>
 
-          <ng-template #searchIconTemplate><fa-icon [icon]="faLocationDot"></fa-icon></ng-template>
-        </nz-collapse-panel>
-      </nz-collapse>
-      <ng-template #panel3>Local</ng-template>
+              <ng-template #searchIconTemplate><fa-icon [icon]="faLocationDot"></fa-icon></ng-template>
+            </nz-collapse-panel>
+          </nz-collapse>
+          <ng-template #panel3><fa-icon [icon]="faLocationDot"></fa-icon> &nbsp; Local</ng-template>
 
-      <!-- Colapse 4- Slário -->
-      <nz-collapse>
-        <nz-collapse-panel [nzActive]="true" [nzHeader]="panel4">
-          <label nz-typography nzType="secondary" for="slider">Salário por mês | (moeda: €)</label>
-          <nz-slider name="slider" [nzStep]="100" [nzMarks]="marks" [nzMax]="value_max" [nzMin]="value_min" nzRange
-            [(ngModel)]="value" (nzOnAfterChange)="filterData4()"></nz-slider>
-        </nz-collapse-panel>
-      </nz-collapse>
-      <ng-template #panel4>Salário</ng-template>
+          <!-- Colapse 4- Slário -->
+          <nz-collapse>
+            <nz-collapse-panel [nzActive]="true" [nzHeader]="panel4">
+              <label nz-typography nzType="secondary" for="slider">Salário por mês | (moeda: €)</label>
+              <nz-slider name="slider" [nzStep]="100" [nzMarks]="marks" [nzMax]="value_max" [nzMin]="value_min" nzRange
+                [(ngModel)]="value" (nzOnAfterChange)="filterData4()"></nz-slider>
+            </nz-collapse-panel>
+          </nz-collapse>
+          <ng-template #panel4><fa-icon [icon]="faMoneyBillWave"></fa-icon> &nbsp; Salário</ng-template>
 
-      <!-- Colapse 5- Experiencia -->
+          <!-- Colapse 5- Experiencia -->
 
-      <nz-collapse>
-        <nz-collapse-panel [nzActive]="true" [nzHeader]="panel5">
-          <label nz-typography nzType="secondary" for="experiencia">Escolhe a tua experiencia</label>
-          <nz-checkbox-group [(ngModel)]="checkOptionsExperiencia" (ngModelChange)="filterData5()">
-            <label *ngFor="let item of checkOptionsExperiencia" nz-checkbox
-              [nzValue]="item.value">{{item.label}}</label>
-          </nz-checkbox-group>
-        </nz-collapse-panel>
-      </nz-collapse>
-      <ng-template #panel5>Experiencia</ng-template>
-    </nz-collapse-panel>
-    </nz-collapse>
+          <nz-collapse>
+            <nz-collapse-panel [nzActive]="true" [nzHeader]="panel5">
+              <label nz-typography nzType="secondary" for="experiencia">Escolhe a tua experiencia</label>
+              <nz-checkbox-group [(ngModel)]="checkOptionsExperiencia" (ngModelChange)="filterData5()">
+                <label *ngFor="let item of checkOptionsExperiencia" nz-checkbox
+                  [nzValue]="item.value">{{item.label}}</label>
+              </nz-checkbox-group>
+            </nz-collapse-panel>
+          </nz-collapse>
+          <ng-template #panel5>Experiencia</ng-template>
     </section>
 
-    <!-- Empregos Cards -->
-    <section nz-col [nzXs]="24" [nzMd]="18" [nzLg]="18" [nzXl]="18" [nzXXl]="18" class="mg-0 pd-top-0">
+    <div class="flex home">
+      <!-- Sider -->
+      <section nz-col [nzXs]="24" [nzMd]="6" [nzLg]="6" [nzXl]="6" [nzXXl]="6"
+        class="sider round_border mg-0 padding-top block-768">
 
-      <nz-table #basiccard [nzData]="filteredData">
+        <button nz-button nzType="primary" (click)="open()">Fitros de pesquisa</button>
 
-        <nz-card class="grey-bkg padding flex colum margin-top-bottom round_border"
-          *ngFor="let data of basiccard.data.slice((currentPage - 1) * pageSize, currentPage * pageSize)">
-          <div class="align-center flex colum margin-8r-12b">
-            <div class="margin-8r-12b">
-              <img class="img_home" src="{{ data.imagem }}" alt="Logoimagem de {{data.empresa}}">
+        <nz-drawer nzClosable="true" nzWidth="100%" nz-col [nzSpan]="24" [nzClosable]="true" [nzVisible]="visible" nzPlacement="right"
+          nzTitle="Filtros de pesquisa" (nzOnClose)="close()">
+          
+
+          <ng-container *nzDrawerContent>
+
+            <!-- Colapse 1- Política -->
+            <nz-collapse>
+              <nz-collapse-panel [nzActive]="true" [nzHeader]="panel1">
+                <label nz-typography nzType="secondary" for="politica">Escolhe uma politica de trabalho</label>
+                <nz-checkbox-group name="politica" [(ngModel)]="checkOptionsOne"
+                  (ngModelChange)="updateSingleChecked(); filterData()"></nz-checkbox-group>
+              </nz-collapse-panel>
+            </nz-collapse>
+            <ng-template #panel1>Política</ng-template>
+
+            <!-- Colapse 2- Area -->
+            <nz-collapse>
+              <nz-collapse-panel [nzActive]="true" [nzHeader]="panel2">
+                <label nz-typography nzType="secondary" for="area">Escolhe uma area de interesse</label>
+                <nz-checkbox-group name="area" [(ngModel)]="checkOptionsTwo"
+                  (ngModelChange)="updateSingleChecked(); filterData2()"></nz-checkbox-group>
+              </nz-collapse-panel>
+            </nz-collapse>
+            <ng-template #panel2>Area</ng-template>
+
+            <!-- Colapse 3- Localização -->
+            <nz-collapse>
+              <nz-collapse-panel [nzActive]="true" [nzHeader]="panel3">
+                <label nz-typography nzType="secondary" for="local">Escolhe uma localização</label>
+
+                <nz-input-group class="margin-8r-12b local-input" [nzSuffix]="searchIconTemplate">
+                  <input class="local-input-shd-none" name="local" placeholder="Localização" nz-input
+                    [(ngModel)]="inputValue" (input)="onInput($event)" [nzAutocomplete]="auto" />
+                  <nz-autocomplete [nzDataSource]="locais" nzBackfill #auto></nz-autocomplete>
+
+                </nz-input-group>
+
+                <ng-template #searchIconTemplate><fa-icon [icon]="faLocationDot"></fa-icon></ng-template>
+              </nz-collapse-panel>
+            </nz-collapse>
+            <ng-template #panel3>Local</ng-template>
+
+            <!-- Colapse 4- Slário -->
+            <nz-collapse>
+              <nz-collapse-panel [nzActive]="true" [nzHeader]="panel4">
+                <label nz-typography nzType="secondary" for="slider">Salário por mês | (moeda: €)</label>
+                <nz-slider name="slider" [nzStep]="100" [nzMarks]="marks" [nzMax]="value_max" [nzMin]="value_min"
+                  nzRange [(ngModel)]="value" (nzOnAfterChange)="filterData4()"></nz-slider>
+              </nz-collapse-panel>
+            </nz-collapse>
+            <ng-template #panel4>Salário</ng-template>
+
+            <!-- Colapse 5- Experiencia -->
+
+            <nz-collapse>
+              <nz-collapse-panel [nzActive]="true" [nzHeader]="panel5">
+                <label nz-typography nzType="secondary" for="experiencia">Escolhe a tua experiencia</label>
+                <nz-checkbox-group [(ngModel)]="checkOptionsExperiencia" (ngModelChange)="filterData5()">
+                  <label *ngFor="let item of checkOptionsExperiencia" nz-checkbox
+                    [nzValue]="item.value">{{item.label}}</label>
+                </nz-checkbox-group>
+              </nz-collapse-panel>
+            </nz-collapse>
+            <ng-template #panel5>Experiencia</ng-template>
+
+          </ng-container>
+        </nz-drawer>
+      </section>
+
+      <!-- Empregos Cards -->
+      <section nz-col [nzXs]="24" class="mg-0 pd-top-0">
+
+        <nz-table #basiccard [nzData]="filteredData">
+
+          <nz-card class="grey-bkg padding flex colum margin-top-bottom round_border"
+            *ngFor="let data of basiccard.data.slice((currentPage - 1) * pageSize, currentPage * pageSize)">
+            <div class="align-center flex colum margin-8r-12b">
+              <div class="margin-8r-12b">
+                <img class="img_home" src="{{ data.imagem }}" alt="Logoimagem de {{data.empresa}}">
+              </div>
+
+
+              <div class=" align-center margin-8r-12b margin-8r-12b margin">
+                <h3>{{ data.posicao}}</h3>
+                <h3>{{ data.empresa}}</h3>
+
+
+                <nz-tag><fa-icon [icon]="faMoneyBillWave"></fa-icon> {{ data.salario }} €</nz-tag>
+                <p nz-typography nzType="secondary">{{ data.experiencia }}</p>
+                <p nz-typography nzType="secondary">{{ data.politica }}</p>
+                <p nz-typography nzType="secondary">{{ data.area }} | {{ data.local }}</p>
+
+              </div>
             </div>
 
-
-            <div class=" align-center margin-8r-12b margin-8r-12b margin">
-              <h3>{{ data.posicao}}</h3>
-              <h3>{{ data.empresa}}</h3>
-
-
-              <nz-tag><fa-icon [icon]="faMoneyBillWave"></fa-icon> {{ data.salario }} €</nz-tag>
-              <p nz-typography nzType="secondary">{{ data.experiencia }}</p>
-              <p nz-typography nzType="secondary">{{ data.politica }}</p>
-              <p nz-typography nzType="secondary">{{ data.area }} | {{ data.local }}</p>
-
-            </div>
-          </div>
-
-          <div>
-            <div class="small-tag flex row colum margin-8r-12b">
-              <ng-container *ngFor="let skill of data.skills | keyvalue">
-                <ng-container *ngIf="skill.value.trim() !== ''">
-                  <nz-tag [nzColor]="color">{{ skill.value }}</nz-tag>
+            <div>
+              <div class="small-tag flex row colum margin-8r-12b">
+                <ng-container *ngFor="let skill of data.skills | keyvalue">
+                  <ng-container *ngIf="skill.value.trim() !== ''">
+                    <nz-tag [nzColor]="color">{{ skill.value }}</nz-tag>
+                  </ng-container>
                 </ng-container>
-              </ng-container>
+
+              </div>
+              <p>
+                {{ data.descricao }}
+              </p>
+              <button class="btn-card" nz-button nzType="primary"
+                (click)="navigateToCandidatura(data)">Candidatar-me</button>
+              <button class="btn-card" nz-button onclick="window.location= 'vagas'" nzType="default">Ver
+                proposta</button>
 
             </div>
-            <p>
-              {{ data.descricao }}
-            </p>
-            <button class="btn-card" nz-button nzType="primary" (click)="navigateToCandidatura(data)">Candidatar-me</button>
-            <button class="btn-card" nz-button onclick="window.location= 'vagas'" nzType="default">Ver proposta</button>
-
-          </div>
-        </nz-card>
-      </nz-table>
-    </section>
+          </nz-card>
+        </nz-table>
+      </section>
+    </div>
   </div>
-</div>

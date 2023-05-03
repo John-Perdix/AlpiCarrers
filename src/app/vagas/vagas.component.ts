@@ -6,7 +6,7 @@ import { EmpregosService } from '../empregos.service';
 import { Emprego } from '../empregos.service';
 
 /* FontAwesome Icons */
-import { faMoneyBillWave, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillWave, faLocationDot, faHouseLaptop, faBriefcase } from '@fortawesome/free-solid-svg-icons';
 
 /* Button size module de ng-zorro */
 import { NzButtonSize } from 'ng-zorro-antd/button';
@@ -30,6 +30,10 @@ export class VagasComponent implements OnInit {
     console.log(this.listOfData);
     this.empregosService.generateRandomEmpregos();
   }
+
+  /* FontAwesome Icons */
+  faHouseLaptop = faHouseLaptop;
+  faBriefcase=faBriefcase;
 
   /* Autocomplete de locais */
   onInput(event: Event): void {
@@ -329,4 +333,16 @@ checkOptionsLocal = [
 /* Checked 3 */
 
   }
+
+  /* Drawer at 764px Mobile */
+  visible = false;
+
+  open(): void {
+    this.visible = true;
+  }
+
+  close(): void {
+    this.visible = false;
+  }
+  
 }

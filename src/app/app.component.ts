@@ -25,7 +25,7 @@ export class AppComponent {
 
   constructor(private fb: UntypedFormBuilder, private router: Router, private empregosService: EmpregosService ) {}
 
-  searchEmprego2!: string;
+  searchEmprego2: any;
   searchEmpregos() {
     this.empregosService['setSearchTerm'](this.searchEmprego2);
     this.router.navigate(['/vagas']);

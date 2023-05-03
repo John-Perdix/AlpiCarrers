@@ -42,8 +42,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzAutocompleteModule } from 'ng-zorro-antd/auto-complete';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzResultModule } from 'ng-zorro-antd/result';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 
@@ -92,6 +92,7 @@ registerLocaleData(pt);
     NzAutocompleteModule,
     NzUploadModule,
     NzResultModule,
+    NzDrawerModule,
 
     Ng2SearchPipeModule,
     RouterModule.forChild([{ path: '', component: VagasComponent }]),

@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @primary-color: #D85F35;
 
+html{
+  --antd-wave-shadow-color: #D85F35;
+}
+
 .home{
     width: 100%;
     min-height: 60vh;
@@ -57,7 +61,7 @@
 
   .wrapper{
     max-width: 1300px;
-    margin: auto;
+    margin: auto auto;
   }
 
   .home h1{
@@ -203,8 +207,9 @@ box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
 }
 
 .ant-btn-group>.ant-btn:only-child{
-  border-radius: 25px;
+  border-radius: 40px;
   padding: 25px 30px 25px 30px;
+  background-color: transparent;
 }
 
 /* Search bar */
@@ -240,9 +245,9 @@ box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
   border-color: #D85F35;
 
   /* Shadow */
--webkit-box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
--moz-box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
-box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
+-webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+-moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
 }
 
 .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover{
@@ -268,14 +273,24 @@ box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
   background: none;
   border-bottom: solid 2px#D85F35;
   text-align: center;
+  background-color: #ECEFF2;
+  color: #D85F35;
+  font-weight: 800;
+  
 }
 
 .ant-table-tbody>tr>td {
   border-bottom: solid 1px #D85F35;
+  background-color: #ECEFF2;
 }
 
 table{
   border-color: none;
+}
+
+ant-table-wrapper {
+  border-radius: 25px;
+  background-color: transparent;
 }
 
 .ant-input-group-addon {
@@ -352,6 +367,23 @@ box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
   border: none;
   color: #fff;
 }
+
+/* checkbox colors */
+
+.ant-checkbox-checked .ant-checkbox-inner{
+  background-color: #D85F35;
+  border-color: #D85F35;
+}
+
+.ant-checkbox-checked::after:hover {
+  border-color: #D85F35;
+}
+
+.block-768 {
+  display: none;
+}
+
+
   @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     [class*="home"] {
@@ -381,6 +413,15 @@ box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
     [class*="margin-top-media"] {
       margin-top: 2em;
     }
+
+    [class*="block-768"]{
+      display: block;
+    }
+
+    [class*="hidden-768"]{
+      display: none;
+    }
+
   }
 
 
@@ -406,4 +447,35 @@ box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
 [class*="cards-responsive"] {
   flex-direction: column;
 }
+  }
+
+  nz-select-item.ant-select-selection-item.ng-star-inserted {
+    overflow: visible;
+    line-height: 0%;
+  }
+
+  .ant-select-single .ant-select-selector .ant-select-selection-item{
+    line-height: 10px;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+  }
+
+  .ant-pagination-item-active a, .ant-pagination-item:focus-visible a, .ant-pagination-item:hover a{
+    color: #D85F35;
+  }
+
+  .ant-pagination-item-active{
+    border-color: #D85F35;
+
+    /* Shadow */
+-webkit-box-shadow: -3px 3px 0px 0px rgba(136,35,0,1);
+-moz-box-shadow: -3px 3px 0px 0px rgba(136,35,0,1);
+box-shadow: -3px 3px 0px 0px rgba(136,35,0,1);
+  }
+
+  .ant-pagination-item, .ant-pagination-next .ant-pagination-item-link, .ant-pagination-prev .ant-pagination-item-link{
+    border-radius: 10px;
   }
