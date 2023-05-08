@@ -19,10 +19,7 @@ import { NzButtonSize } from 'ng-zorro-antd/button';
 })
 
 
-export class LandingComponent implements OnInit {
-   
-
-
+export class LandingComponent implements OnInit {  
   pageSize = 3;
   currentPage = 1;
 

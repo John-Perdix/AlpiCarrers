@@ -1,7 +1,41 @@
 /* Table */
-.ant-table{
+nz-table{
     background: none;
-    overflow-x:auto;
+    width: 100%;
   }
 
+  .animate_img:hover{
+    animation: animate 40s cubic-bezier(0.68, -0.6, 0.32, 1.6) 0s infinite normal forwards;
+  }
 
+  .width-100{
+    width: 100%;
+  }
+
+  @keyframes animate {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    10%,
+    30%,
+    50%,
+    70% {
+      transform: translateY(-8px);
+    }
+  
+    20%,
+    40%,
+    60% {
+      transform: translateY(8px);
+    }
+  
+    80% {
+      transform: translateY(6.4px);
+    }
+  
+    90% {
+      transform: translateY(-6.4px);
+    }
+  }

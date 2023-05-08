@@ -1,0 +1,54 @@
+<div class="wrapper">
+
+
+    <section class="mg-0">
+        <nz-breadcrumb>
+          <nz-breadcrumb-item>
+            <a onclick="window.location= ''">Home</a>
+          </nz-breadcrumb-item>
+          <nz-breadcrumb-item>Vagas</nz-breadcrumb-item>
+          <nz-breadcrumb-item>Vaga</nz-breadcrumb-item>
+        </nz-breadcrumb>
+    
+        <h1 *ngIf="data_vaga">{{data_vaga.posicao}} na {{data_vaga.empresa}}</h1>
+      </section>
+
+
+    <section nz-col [nzXs]="24" class="mg-0 pd-top-0">
+          <nz-card class="grey-bkg padding flex colum margin-top-bottom round_border">
+            <div class="align-center flex colum margin-8r-12b">
+              <div class="margin-8r-12b">
+                <img class="img_home" src="{{ data_vaga.imagem }}" alt="Logoimagem de {{data_vaga.empresa}}">
+              </div>
+
+
+              <div class=" align-center margin-8r-12b margin-8r-12b margin">
+                <h3>{{ data_vaga.posicao}}</h3>
+                <h3>{{ data_vaga.empresa}}</h3>
+
+
+                <nz-tag><fa-icon [icon]="faMoneyBillWave"></fa-icon> {{ data_vaga.salario }} €</nz-tag>
+                <p nz-typography nzType="secondary">{{ data_vaga.experiencia }}</p>
+                <p nz-typography nzType="secondary">{{ data_vaga.politica }}</p>
+                <p nz-typography nzType="secondary">{{ data_vaga.area }} | {{ data_vaga.local }}</p>
+
+              </div>
+            </div>
+
+            <div>
+              <div class="small-tag flex row colum margin-8r-12b">
+                <ng-container *ngFor="let skill of data_vaga.skills | keyvalue">
+                  <ng-container *ngIf="skill.value !== ''">
+                    <nz-tag [nzColor]="color">{{ skill.value }}</nz-tag>
+                  </ng-container>
+                </ng-container>
+
+              </div>
+              <p>
+                {{ data_vaga.descricao }}
+              </p>
+
+            </div>
+          </nz-card>
+      </section>
+</div>

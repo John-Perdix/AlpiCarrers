@@ -49,6 +49,7 @@ import { RouterModule } from '@angular/router';
 
 /* serachpipe Module */
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { InfoVagaComponent } from './info-vaga/info-vaga.component';
 
 
 
@@ -59,7 +60,8 @@ registerLocaleData(pt);
     AppComponent,
     LandingComponent,
     VagasComponent,
-    CandidaturaComponent
+    CandidaturaComponent,
+    InfoVagaComponent
   ],
   imports: [
     ReactiveFormsModule,

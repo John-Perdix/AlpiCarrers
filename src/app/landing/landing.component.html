@@ -2,6 +2,19 @@
 
   <!-- Hero section -->
   <section class="home align-end">
+    <svg class="noise" xmlns='http://www.w3.org/2000/svg'>
+      <filter id='noiseFilter'>
+        <feTurbulence 
+          type='fractalNoise' 
+          baseFrequency='0.65' 
+          numOctaves='3' 
+          stitchTiles='stitch'/>
+      </filter>
+      
+      <rect width='100%' height='100%' filter='url(#noiseFilter)'/>
+    </svg>
+    
+
     <div class="child-1" nz-col [nzSpan]="24" [nzXs]="24" [nzMd]="12" [nzLg]="12">
       <div>
         <h1>Queres encontrar a carreira profissional perfeita para ti?</h1>
@@ -15,7 +28,7 @@
     </div>
 
     <div class="child-2" nz-col nz-col [nzSpan]="24" [nzXs]="24" [nzMd]="12" [nzLg]="12">
-      <img class="img_home" src="../../assets/people_looking-01.png"
+      <img class="img_home animate_img" src="../../assets/people_looking-01.png"
         alt="Ilustração de pessoas a olhar em volta com binoculus etc">
     </div>
   </section>
@@ -23,8 +36,8 @@
 <!-- Marquee tag animation -->
   <section>
     <div class="marquee">
-      <img class="img_home" src="../../assets/company_logos.png" alt="Logoimagem da div.pt">
-      <img class="img_home" src="../../assets/company_logos.png" alt="Logoimagem da div.pt">
+      <img src="../../assets/company_logos.png" alt="Logoimagem da div.pt">
+      <img src="../../assets/company_logos.png" alt="Logoimagem da div.pt">
     </div>
   </section>
 
@@ -40,7 +53,7 @@
 
       <ng-template #searchIconTemplate><span nz-icon nzType="search" nzTheme="outline"></span></ng-template>
 
-      <nz-table [nzShowPagination]=" 'false'" #basicTable [nzData]="listOfData">
+      <nz-table [nzShowQuickJumper]="true" [nzShowPagination]=" 'false'" #basicTable [nzData]="listOfData">
         <thead>
           <tr>
             <th>Posição</th>
@@ -135,13 +148,13 @@
 
 
   <!-- CARDS -->
-  <section nz-col [nzSpan]="24" [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24" [nzXXl]="24">
+  <section class="card-container" nz-col [nzXs]="24" [nzMd]="24" [nzLg]="24" [nzXl]="24" [nzXXl]="24">
     <h1>Vagas em destaque</h1>
 
-    <nz-table  class="wrapper cards-responsive" #basiccard [nzData]="firstThreeEmpregos" nzFrontPagination="false">
+    <nz-table  class="wrapper cards-responsive flex flex-wrap" #basiccard [nzData]="firstThreeEmpregos" nzFrontPagination="false">
       
-      <nz-card class="grey-bkg padding flex colum margin-top-bottom round_border" *ngFor="let data of basiccard.data">
-        <div class="align-center flex colum margin-8r-12b">
+      <nz-card nz-col [nzXs]="24" [nzMd]="24" [nzLg]="11" [nzXl]="11" [nzXXl]="11" class="grey-bkg padding flex flex-wrap colum margin-top-bottom round_border" *ngFor="let data of basiccard.data">
+        <div class="align-center flex flex-wrap colum margin-8r-12b">
           <div class="margin-8r-12b">
             <img class="img_home" src="{{ data.imagem }}" alt="Logoimagem de {{data.empresa}}">
           </div>
@@ -156,7 +169,7 @@
         </div>
 
         <div>
-          <div class="flex small-tag row colum margin-8r-12b">
+          <div class="flex flex-wrap small-tag row colum margin-8r-12b">
             <ng-container *ngFor="let skill of data.skills | keyvalue">
               <ng-container *ngIf="skill.value.trim() !== ''">
                 <nz-tag [nzColor]="color">{{ skill.value }}</nz-tag>

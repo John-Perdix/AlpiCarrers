@@ -108,7 +108,7 @@ value_min = 800;
       };
       this.listOfData.push(emprego);
     }
-    this.firstThreeEmpregos = this.listOfData.slice(0, 3);
+    this.firstThreeEmpregos = this.listOfData.slice(0, 4);
   }
 
   getRandomSkills(): { [key: number]: string } {

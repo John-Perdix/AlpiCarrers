@@ -9,6 +9,9 @@ body{
 
   [nz-menu] {
     line-height: 64px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #D85F35;
   }
 
   nz-header{

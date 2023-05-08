@@ -1,4 +1,6 @@
 <div class="wrapper">
+
+<!-- breadcrum e H1 -->
   <section class="mg-0">
     <nz-breadcrumb>
       <nz-breadcrumb-item>
@@ -94,7 +96,7 @@
               </nz-checkbox-group>
             </nz-collapse-panel>
           </nz-collapse>
-          <ng-template #panel5>Experiencia</ng-template>
+          <ng-template #panel5><fa-icon [icon]="faAddressBook"></fa-icon> &nbsp; Experiencia</ng-template>
     </section>
 
     <div class="flex home">
@@ -102,7 +104,7 @@
       <section nz-col [nzXs]="24" [nzMd]="6" [nzLg]="6" [nzXl]="6" [nzXXl]="6"
         class="sider round_border mg-0 padding-top block-768">
 
-        <button nz-button nzType="primary" (click)="open()">Fitros de pesquisa</button>
+        <button nz-button nzType="primary" nz-col [nzSpan]="24" (click)="open()">Fitros de pesquisa</button>
 
         <nz-drawer nzClosable="true" nzWidth="100%" nz-col [nzSpan]="24" [nzClosable]="true" [nzVisible]="visible" nzPlacement="right"
           nzTitle="Filtros de pesquisa" (nzOnClose)="close()">
@@ -118,7 +120,7 @@
                   (ngModelChange)="updateSingleChecked(); filterData()"></nz-checkbox-group>
               </nz-collapse-panel>
             </nz-collapse>
-            <ng-template #panel1>Política</ng-template>
+            
 
             <!-- Colapse 2- Area -->
             <nz-collapse>
@@ -128,7 +130,6 @@
                   (ngModelChange)="updateSingleChecked(); filterData2()"></nz-checkbox-group>
               </nz-collapse-panel>
             </nz-collapse>
-            <ng-template #panel2>Area</ng-template>
 
             <!-- Colapse 3- Localização -->
             <nz-collapse>
@@ -136,7 +137,7 @@
                 <label nz-typography nzType="secondary" for="local">Escolhe uma localização</label>
 
                 <nz-input-group class="margin-8r-12b local-input" [nzSuffix]="searchIconTemplate">
-                  <input class="local-input-shd-none" name="local" placeholder="Localização" nz-input
+                  <input class="bkg-none local-input-shd-none" name="local" placeholder="Localização" nz-input
                     [(ngModel)]="inputValue" (input)="onInput($event)" [nzAutocomplete]="auto" />
                   <nz-autocomplete [nzDataSource]="locais" nzBackfill #auto></nz-autocomplete>
 
@@ -145,7 +146,7 @@
                 <ng-template #searchIconTemplate><fa-icon [icon]="faLocationDot"></fa-icon></ng-template>
               </nz-collapse-panel>
             </nz-collapse>
-            <ng-template #panel3>Local</ng-template>
+
 
             <!-- Colapse 4- Slário -->
             <nz-collapse>
@@ -155,7 +156,7 @@
                   nzRange [(ngModel)]="value" (nzOnAfterChange)="filterData4()"></nz-slider>
               </nz-collapse-panel>
             </nz-collapse>
-            <ng-template #panel4>Salário</ng-template>
+
 
             <!-- Colapse 5- Experiencia -->
 
@@ -168,7 +169,7 @@
                 </nz-checkbox-group>
               </nz-collapse-panel>
             </nz-collapse>
-            <ng-template #panel5>Experiencia</ng-template>
+
 
           </ng-container>
         </nz-drawer>
@@ -214,7 +215,7 @@
               </p>
               <button class="btn-card" nz-button nzType="primary"
                 (click)="navigateToCandidatura(data)">Candidatar-me</button>
-              <button class="btn-card" nz-button onclick="window.location= 'vagas'" nzType="default">Ver
+              <button class="btn-card" nz-button (click)="navigateToInfo(data)" nzType="default">Ver
                 proposta</button>
 
             </div>

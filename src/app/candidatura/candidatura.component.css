@@ -1,72 +1,81 @@
 .phone-select {
-    width: 70px;
-  }
+  width: 70px;
+}
 
-  .label_radio{
-    flex-direction: column;
-    max-width: max-content;
-  }
+.label_radio {
+  flex-direction: column;
+  max-width: max-content;
+}
 
-  nz-form-item{
-    margin: 2em 0;
-  }
-  
-  .ant-input, .ant-radio-button-wrapper{
-    border-radius: 25px;
-    border-color: #D85F35;
-    border-radius: 25px;
-    color: #000;
-    padding: 10px 15px;
-  
-    /* Shadow */
-  -webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+nz-form-item {
+  margin: 2em 0;
+}
+
+.ant-input,
+.ant-radio-button-wrapper {
+  border-radius: 25px;
+  border-color: #D85F35;
+  border-radius: 25px;
+  color: #000;
+  padding: 10px 15px;
+
+  /* Shadow */
+  /*   -webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
   -moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
-  box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
-  }
+  box-shadow: -5px 5px 0px 0px rgba(136,35,0,1); */
+  -webkit-box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.2);
+}
 
-  .ant-radio-button-wrapper{
-    padding: 10px 15px;
-    height: max-content;
-    
-  }
+.ant-radio-button-wrapper {
+  padding: 10px 15px;
+  height: max-content;
 
-  .ant-radio-button-wrapper:first-child {
-    border-left: none;
-  }
-  .ant-radio-button-wrapper:not(:first-child)::before{
-    width: 0;
-  }
+}
 
-  .ant-input-group>.ant-input:first-child{
-    border-radius: 25px;
-  }
-  .ant-input-group>.ant-input:last-child{
-    border-radius: 25px;
-  }
+.ant-radio-button-wrapper:first-child {
+  border-left: none;
+}
 
-  .ant-radio-button-wrapper-checked:not([class*=' ant-radio-button-wrapper-disabled']).ant-radio-button-wrapper{
-    background-color: #D85F35;
-    border-color: #D85F35;
-    color: #fff;
+.ant-radio-button-wrapper:not(:first-child)::before {
+  width: 0;
+}
 
-    /* Shadow */
-  -webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+.ant-input-group>.ant-input:first-child {
+  border-radius: 25px;
+}
+
+.ant-input-group>.ant-input:last-child {
+  border-radius: 25px;
+}
+
+.ant-radio-button-wrapper-checked:not([class*=' ant-radio-button-wrapper-disabled']).ant-radio-button-wrapper {
+  background-color: #D85F35;
+  border-color: #D85F35;
+  color: #fff;
+
+  /* Shadow */
+  /* -webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
   -moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
-  box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
-  }
+  box-shadow: -5px 5px 0px 0px rgba(136,35,0,1); */
+  -webkit-box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: -5px 5px 0px 0px rgba(0, 0, 0, 0.2);
+}
 
-  .ant-input-group-addon {
-    
-    border-color: #D85F35;
-    border-radius: 25px;
-  }
+.ant-input-group-addon {
 
-  form .ant-input-affix-wrapper>input.ant-input{
-    box-shadow: none;
-    background-color: #fff;
-    color: #000;
-  } 
+  border-color: #D85F35;
+  border-radius: 25px;
+}
 
-  .flex-wrap{
-    flex-wrap: wrap;
-  }
+form .ant-input-affix-wrapper>input.ant-input {
+  box-shadow: none;
+  background-color: #fff;
+  color: #000;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}

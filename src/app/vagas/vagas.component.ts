@@ -1,12 +1,20 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
+/* import { Observable } from 'rxjs';
+import 'rxjs/add/observable/fromEvent';
+
+  Observable.fromEvent(document.body, 'mousemove').subscribe(e => {
+    console.log(e.pageX, e.pageY)
+  }); */
+
+
 /* Serviço */
 import { EmpregosService } from '../empregos.service';
 import { Emprego } from '../empregos.service';
 
 /* FontAwesome Icons */
-import { faMoneyBillWave, faLocationDot, faHouseLaptop, faBriefcase } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillWave, faLocationDot, faHouseLaptop, faBriefcase, faAddressBook } from '@fortawesome/free-solid-svg-icons';
 
 /* Button size module de ng-zorro */
 import { NzButtonSize } from 'ng-zorro-antd/button';
@@ -17,11 +25,13 @@ import { NzMarks } from 'ng-zorro-antd/slider';
 /* searchPipes  */
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
+
 @Component({
   selector: 'app-vagas',
   templateUrl: './vagas.component.html',
   styleUrls: ['./vagas.component.css']
 })
+
 export class VagasComponent implements OnInit {
 
   ngOnInit(): void {
@@ -51,9 +61,11 @@ export class VagasComponent implements OnInit {
 
   constructor(private empregosService: EmpregosService, private router: Router) { }
 
+
   /* FontAwesome Icons */
   faMoneyBillWave = faMoneyBillWave;
   faLocationDot = faLocationDot;
+  faAddressBook = faAddressBook;
 
   /* paginatio variables */
   pageSize = 5;
@@ -254,6 +266,10 @@ checkOptionsLocal = [
     this.router.navigate(['/candidatura'], { state: { data: data } });
   }
 
+  navigateToInfo(data: any) {
+    this.router.navigate(['/info-vaga'], { state: { data: data } });
+  }
+
 
   /* data filtering tags */
 
@@ -346,3 +362,5 @@ checkOptionsLocal = [
   }
   
 }
+
+

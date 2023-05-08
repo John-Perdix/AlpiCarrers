@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @primary-color: #D85F35;
 
+*{
+  font-family: 'Inter', sans-serif;
+}
 html{
   --antd-wave-shadow-color: #D85F35;
 }
@@ -22,6 +25,9 @@ html{
 
 .flex {
     display: flex;
+}
+.flex-wrap{
+  flex-wrap: wrap;
 }
 
 .align-center{
@@ -122,7 +128,7 @@ html{
 
   .marquee img{
     animation: move-rtl 15000ms linear infinite;
-    width: clamp(500%, 8vw, 400%);;
+    /* width: clamp(600%, 8vw, 1000%); */
   }
 
   @keyframes move-rtl{
@@ -157,6 +163,23 @@ html{
 }
 
 /* Butões */
+
+.ant-btn {
+  border-radius: 25px;
+  border-color: #D85F35;
+  border-radius: 25px;
+  font-weight: 800;
+  color: #D85F35;
+  /* Shadow */
+/* -webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+-moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+box-shadow: -5px 5px 0px 0px rgba(136,35,0,1); */
+-webkit-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+}
+
+
 .ant-btn-primary {
   /* padding: 7px 25px 30px 25px; */
   border-radius: 25px;
@@ -165,9 +188,12 @@ html{
   color: #fff;
 
   /* Shadow */
--webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+/* -webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
 -moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+box-shadow: -5px 5px 0px 0px rgba(136,35,0,1); */
+-webkit-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
 }
 
 
@@ -184,16 +210,6 @@ box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
 }
 
 
-.ant-btn {
-  border-radius: 25px;
-  border-color: #D85F35;
-  border-radius: 25px;
-
-  /* Shadow */
--webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
--moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
-}
 
 
 .ant-btn:hover {
@@ -212,6 +228,15 @@ box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
   background-color: transparent;
 }
 
+.ant-btn-group>.ant-btn:only-child:hover{
+  color: #9c3411;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #909;
+  opacity:  1;
+}
+
 /* Search bar */
 .ant-input-affix-wrapper{
   border-radius: 25px;
@@ -222,9 +247,12 @@ box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
   padding: 10px 15px;
 
   /* Shadow */
--webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+/* -webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
 -moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+box-shadow: -5px 5px 0px 0px rgba(136,35,0,1); */
+-webkit-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
 }
 
 .newsletter-input, .local-input, .ant-select:not(.ant-select-customize-input) .ant-select-selector {
@@ -236,18 +264,28 @@ box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
   padding: 10px 15px;
 
   /* Shadow */
--webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+/* -webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
 -moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+box-shadow: -5px 5px 0px 0px rgba(136,35,0,1); */
+-webkit-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+}
+
+::placeholder{
+  color: #fff;
 }
 
 .newsletter-input, .local-input, .ant-select:not(.ant-select-customize-input) .ant-select-selector:hover {
   border-color: #D85F35;
 
   /* Shadow */
--webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+/* -webkit-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
 -moz-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
-box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
+box-shadow: -5px 5px 0px 0px rgba(136,35,0,1); */
+-webkit-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+-moz-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
 }
 
 .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover{
@@ -263,7 +301,7 @@ box-shadow: -5px 5px 0px 0px rgba(136,35,0,1);
 }
 
 .ant-input-affix-wrapper>input.ant-input {
-  background-color: #D85F35;
+  background-color: transparent;
   border-color: #D85F35;
   border-radius: 25px;
   color: #fff;
@@ -340,13 +378,23 @@ ant-table-wrapper {
   margin: 25px 0;
   
   /* Shadow */
--webkit-box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
--moz-box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
-box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
+  -webkit-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+  box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
 }
 
 .ant-slider-track {
   background-color: #E4997F;
+  border-color:#E4997F;
+}
+
+.ant-slider:hover .ant-slider-track{
+  background-color: #D85F35;
+}
+
+.ant-slider-handle:focus, .ant-slider-handle:active{
+  background-color: #D85F35;
+  border: 2px solid #D85F35;
 }
 
 .ant-slider-handle {
@@ -422,6 +470,73 @@ box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
       display: none;
     }
 
+    .logo{
+      margin: auto !important;
+    }
+
+    .nav{
+      margin: auto;
+    }
+
+    th {
+      display: none;
+    }
+    tr:nth-of-type(2n){
+      background-color: hsl(0 0% 0% / 0.5);
+    }
+
+    td{
+      display: grid;
+      gap: 0.5rem;
+      grid-template-columns: 15ch auto;
+      padding: 0.5rem 1 rem;
+    }
+
+    td::before{
+      content:attr();
+      font-weight: 700;
+      text-transform: capitalize;
+    }
+
+    .ant-table-tbody>tr>td{
+      border: none;
+    }
+
+    .ant-table-tbody>tr>td:first-child{
+      padding-top: 2rem;
+    }
+    
+
+    .ant-table-tbody>tr>td:last-child{
+      padding-bottom: 2rem;
+      border-bottom: solid 1px #D85F35;
+    }
+
+    /* Labels for responsive table */
+    td:nth-of-type(1)::before{
+      content: "posição: ";
+      color: #D85F35;
+    }
+
+    td:nth-of-type(2)::before{
+      content: "empresa: ";
+      color: #D85F35;
+    }
+
+    td:nth-of-type(3)::before{
+      content: "Area: ";
+      color: #D85F35;
+    }
+
+    td:nth-of-type(4)::before{
+      content: "política: ";
+      color: #D85F35;
+    }
+
+    td:nth-of-type(5)::before{
+      content: "Local: ";
+      color: #D85F35;
+    }
   }
 
 
@@ -467,15 +582,92 @@ box-shadow: -5px 5px 0px 0px rgb(195, 49, 0);
     color: #D85F35;
   }
 
+  .ant-pagination-item:hover{
+    border-color: #D85F35;
+  }
+
+  .ant-pagination-item-active:hover{
+    background-color: #ECEFF2;
+  }
+
   .ant-pagination-item-active{
     border-color: #D85F35;
 
     /* Shadow */
--webkit-box-shadow: -3px 3px 0px 0px rgba(136,35,0,1);
--moz-box-shadow: -3px 3px 0px 0px rgba(136,35,0,1);
-box-shadow: -3px 3px 0px 0px rgba(136,35,0,1);
+    -webkit-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
+    box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
   }
 
   .ant-pagination-item, .ant-pagination-next .ant-pagination-item-link, .ant-pagination-prev .ant-pagination-item-link{
     border-radius: 10px;
   }
+
+  .flex-wrap .ant-table table{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 50px;
+    justify-content: space-between;
+  }
+
+  ::ng-deep .ant-input ::placeholder {
+    color: red;
+  }
+
+  .ant-collapse>.ant-collapse-item>.ant-collapse-header{
+    color: #D85F35;
+  }
+
+  .ant-slider:hover .ant-slider-handle:not(.ant-tooltip-open){
+    border-color: rgba(136,35,0,1);
+  }
+
+  .ant-slider-handle:focus{
+    box-shadow: 0 0 0 5px rgba(136,35,0,01);
+  }
+
+  .ant-select-selection {
+    ::-webkit-input-placeholder {
+      color: #fff  !important;
+    }
+    &:placeholder {
+      color: #fff  !important;
+    }
+    :placeholder {
+      color: #fff  !important;
+    }
+    ::-webkit-input-placeholder {
+      color: #fff !important;
+    }
+  }
+  
+  ::-webkit-input-placeholder {
+    color: #fff  !important;
+  }
+
+  /* Gradien noise */
+  .noise{
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+      width: 100%;
+      height: 70vh;
+      filter: contrast(100%) brightness(150%);
+      background: 
+      linear-gradient(180deg, rgba(216,95,53,1), rgba(255, 255, 255, 0)),
+      url(/👆/that/noise.svg);
+    
+    }
+
+    .noise_mouse{
+      position: absolute;
+      border-radius: 200px;
+      width: 100px;
+      height: 100px;
+      filter: contrast(200%) brightness(200%);
+      background: 
+      radial-gradient(circle at 50% 50%, rgba(216,95,53,1), rgba(0,0,0,0)),
+      url(/👆/that/noise.svg);
+    }
+    
