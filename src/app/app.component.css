@@ -65,3 +65,21 @@ body{
 }
 
 
+.ant-select-selection {
+  ::-webkit-input-placeholder {
+    color: #fff  !important;
+  }
+  &:placeholder {
+    color: #fff  !important;
+  }
+  :placeholder {
+    color: #fff  !important;
+  }
+  ::-webkit-input-placeholder {
+    color: #fff !important;
+  }
+}
+
+::-webkit-input-placeholder {
+  color: #fff  !important;
+}

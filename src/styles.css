@@ -116,14 +116,17 @@ html{
     border-radius: 1em;
   }
 
+  .relative{
+    position: relative;
+  }
   .marquee{
+    position: relative;
     display: flex;
     justify-content: flex-start;
     overflow: hidden;
     border-radius: 5em;
     background-color: #ECEFF2;
     height: 10em;
-    
   }
 
   .marquee img{
@@ -232,10 +235,6 @@ box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
   color: #9c3411;
 }
 
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color:    #909;
-  opacity:  1;
-}
 
 /* Search bar */
 .ant-input-affix-wrapper{
@@ -272,9 +271,6 @@ box-shadow: -5px 5px 0px 0px rgba(136,35,0,1); */
 box-shadow: -5px 5px 0px 0px rgba(0,0,0,0.2);
 }
 
-::placeholder{
-  color: #fff;
-}
 
 .newsletter-input, .local-input, .ant-select:not(.ant-select-customize-input) .ant-select-selector:hover {
   border-color: #D85F35;
@@ -610,10 +606,6 @@ ant-table-wrapper {
     justify-content: space-between;
   }
 
-  ::ng-deep .ant-input ::placeholder {
-    color: red;
-  }
-
   .ant-collapse>.ant-collapse-item>.ant-collapse-header{
     color: #D85F35;
   }
@@ -626,23 +618,24 @@ ant-table-wrapper {
     box-shadow: 0 0 0 5px rgba(136,35,0,01);
   }
 
-  .ant-select-selection {
+
+  .ant-select-selection .ant-form {
     ::-webkit-input-placeholder {
-      color: #fff  !important;
+      color: #E4997F  !important;
     }
     &:placeholder {
-      color: #fff  !important;
+      color: #E4997F  !important;
     }
-    :placeholder {
-      color: #fff  !important;
+    :placeholder .ant-form{
+      color: #E4997F  !important;
     }
-    ::-webkit-input-placeholder {
-      color: #fff !important;
+    ::-webkit-input-placeholder{
+      color: #E4997F !important;
     }
   }
   
-  ::-webkit-input-placeholder {
-    color: #fff  !important;
+  ::-webkit-input-placeholder{
+    color: #E4997F  !important;
   }
 
   /* Gradien noise */
@@ -670,4 +663,21 @@ ant-table-wrapper {
       radial-gradient(circle at 50% 50%, rgba(216,95,53,1), rgba(0,0,0,0)),
       url(/👆/that/noise.svg);
     }
-    
+
+    .map{
+      top: 200px;
+      z-index: 0;
+      position: absolute;
+      margin: auto;
+      height: 385vh;
+      width: 100%;
+    }
+
+    path {
+      transition: stroke-dashoffset 0.3s linear;
+    }
+
+    .zindex10{
+      z-index: 10;
+    }
+  
